@@ -18,4 +18,4 @@ brew install rename
 brew cask install google-chrome
 brew cask install visual-studio-code
 brew cask install miniconda
-brew cask install google-drive-file-stream
+brew cask install google-backup-and-sync
