@@ -54,7 +54,7 @@ prompt_git() {
 
             # Check for clean state
             if [ -z "$s" ]; then
-                s+=icon_check;
+                s+=$icon_check;
             fi;
 
 		fi;
