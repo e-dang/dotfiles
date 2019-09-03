@@ -1,4 +1,23 @@
 
+# colors
+tput sgr0; # reset colors
+bold=$(tput bold);
+reset=$(tput sgr0);
+black=$(tput setaf 0);
+blue=$(tput setaf 33);
+cyan=$(tput setaf 37);
+green=$(tput setaf 71);
+orange=$(tput setaf 166);
+purple=$(tput setaf 125);
+red=$(tput setaf 124);
+violet=$(tput setaf 61);
+white=$(tput setaf 15);
+yellow=$(tput setaf 136);
+
+# icons
+icon_next="❯"
+icon_check="✓"
+
 # git prompt
 prompt_git() {
 	local s='';
@@ -33,6 +52,11 @@ prompt_git() {
 				s+='$';
 			fi;
 
+            # Check for clean state
+            if [ -z "$s" ]; then
+                s+=icon_check;
+            fi;
+
 		fi;
 
 		# Get the short symbolic ref.
@@ -49,24 +73,6 @@ prompt_git() {
 		return;
 	fi;
 }
-
-# colors
-tput sgr0; # reset colors
-bold=$(tput bold);
-reset=$(tput sgr0);
-black=$(tput setaf 0);
-blue=$(tput setaf 33);
-cyan=$(tput setaf 37);
-green=$(tput setaf 71);
-orange=$(tput setaf 166);
-purple=$(tput setaf 125);
-red=$(tput setaf 124);
-violet=$(tput setaf 61);
-white=$(tput setaf 15);
-yellow=$(tput setaf 136);
-
-# icon
-icon_next="❯"
 
 # bash prompt
 PS1="\[${bold}\]";
