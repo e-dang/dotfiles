@@ -21,3 +21,4 @@ brew cask install visual-studio-code
 brew cask install miniconda
 brew cask install google-backup-and-sync
 brew cask install divvy
+brew cask install iterm2
