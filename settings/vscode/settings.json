@@ -29,7 +29,8 @@
     "workbench.colorCustomizations": {
         "terminal.ansiYellow": "#f9a824",
         "terminal.ansiBlack": "#1E1E1E",
-        "terminal.ansiWhite": "#eaeae9"
+        "terminal.ansiWhite": "#eaeae9",
+        "terminal.ansiGreen": "#558b2e"
     },
     "autoDocstring.docstringFormat": "google",
     "autoDocstring.startOnNewLine": true,
