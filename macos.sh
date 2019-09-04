@@ -4,6 +4,9 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+# save defaults to file in settings folder
+defaults read > ~/.dotfiles/settings/macos_defaults
+
 # Ask for the administrator password upfront
 sudo -v
 
