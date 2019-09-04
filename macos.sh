@@ -16,9 +16,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Eric's MacBook"
-sudo scutil --set HostName "Eric's MacBook"
-sudo scutil --set LocalHostName "Eric's MacBook"
+sudo scutil --set ComputerName "e-dang"
+sudo scutil --set HostName "e-dang"
+sudo scutil --set LocalHostName e-dang
+
+# Flush DNS cache
+dscacheutil -flushcache
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -54,7 +57,7 @@ defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
-# Set Desktop as the default location for new Finder windows
+# Set Documents as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Documents/"
