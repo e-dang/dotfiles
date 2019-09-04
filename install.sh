@@ -5,20 +5,20 @@
 # And also installs Homebrew Packages
 # And sets vscode preferences
 # And sets MacOS preferences
+# And installs oh-my-zsh with preferences
 ###########################
 
+# check for passed argument
 if [ "$#" -ne 1 ]; then
     echo "Usage: install.sh <home_directory>"
     exit 1
 fi
 
 homedir=$1
-
-# dotfiles directory
 dotfiledir=${homedir}/.dotfiles
 
-# list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc zshrc hushlogin pylintrc "
+# link misc. dotfiles
+files="pylintrc hushlogin gitignore"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -31,14 +31,17 @@ for file in ${files}; do
     ln -sf ${dotfiledir}/.${file} ${homedir}/.${file}
 done
 
-# Run the Homebrew Script
+# Customize bash prompt
+./bash.sh $homedir $dotfiledir
+
+# Install packages with HomeBrew
 ./brew.sh
 
-# Run the MacOS Script
+# Change MacOS settings
 ./macos.sh $dotfiledir
 
-# Run the VSCode Script
+# Change VSCode settings
 ./vscode.sh $dotfiledir
 
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
+# Install and customize zsh
+./zsh.sh $homedir $dotfiledir
