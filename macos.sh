@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# check for passed argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: install.sh <home_directory>"
+    exit 1
+fi
+
 dotfiledir=$1
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -99,3 +105,5 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+killall Finder
