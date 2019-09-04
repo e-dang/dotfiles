@@ -12,5 +12,5 @@ code --install-extension fabiospampinato.vscode-highlight
 code --install-extension redhat.vscode-yaml
 
 # copy user settings
-cp ${dotfiledir}/settings/vscode/keybindings.json /Users/ericdang/Library/Application\ Support/Code/User/
-cp ${dotfiledir}/settings/vscode/settings.json /Users/ericdang/Library/Application\ Support/Code/User/
+cp ${dotfiledir}/settings/vscode_keybindings.json /Users/ericdang/Library/Application\ Support/Code/User/keybindings.json
+cp ${dotfiledir}/settings/vscode_settings.json /Users/ericdang/Library/Application\ Support/Code/User/settings.json
