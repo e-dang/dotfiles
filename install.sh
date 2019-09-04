@@ -18,7 +18,7 @@ homedir=$1
 dotfiledir=${homedir}/.dotfiles
 
 # list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc bash_prompt aliases env functions hushlogin pylintrc inputrc"
+files="bash_profile bashrc zshrc hushlogin pylintrc "
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -35,7 +35,10 @@ done
 ./brew.sh
 
 # Run the MacOS Script
-./macos.sh
+./macos.sh $dotfiledir
 
 # Run the VSCode Script
-./vscode.sh
+./vscode.sh $dotfiledir
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
