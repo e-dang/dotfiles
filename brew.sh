@@ -12,6 +12,7 @@ brew install tree
 brew install git
 brew install parallel
 brew install rename
+brew install ssh-copy-id
 # brew install open-babel
 
 # install programs
