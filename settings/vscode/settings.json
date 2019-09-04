@@ -1,28 +1,38 @@
 {
     "python.pythonPath": "/anaconda3/bin/python",
-    "terminal.integrated.env.osx": {
-        "PATH": ""
-    },
-    "workbench.iconTheme": "file-icons",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.minimap.maxColumn": 80,
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.quickSuggestionsDelay": 5,
-    "files.trimTrailingWhitespace": true,
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.settings.editor": "json",
-    "workbench.settings.useSplitJSON": true,
-    "autoDocstring.docstringFormat": "google",
-    "autoDocstring.startOnNewLine": true,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.formatting.autopep8Args": [
         "--max-line-length=120"
     ],
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.fontFamily": "Inconsolata for Powerline",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.env.osx": {
+        "PATH": ""
+    },
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.minimap.maxColumn": 80,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestionsDelay": 5,
     "editor.formatOnSave": true,
+    "editor.renderWhitespace": "none",
     "editor.rulers": [
         120
     ],
+    "files.trimTrailingWhitespace": true,
+    "workbench.iconTheme": "file-icons",
+    "workbench.settings.editor": "json",
+    "workbench.settings.useSplitJSON": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorCustomizations": {
+        "terminal.ansiYellow": "#f9a824",
+        "terminal.ansiBlack": "#1E1E1E",
+        "terminal.ansiWhite": "#eaeae9"
+    },
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.startOnNewLine": true,
     "code-runner.executorMap": {
         "python": "$pythonPath -u $fullFileName"
     },
@@ -108,8 +118,6 @@
         ]
     },
     "explorer.confirmDelete": false,
-    "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 0,
-    "editor.renderWhitespace": "none"
 }

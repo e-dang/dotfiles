@@ -1,4 +1,3 @@
-
 # colors
 tput sgr0; # reset colors
 bold=$(tput bold);
