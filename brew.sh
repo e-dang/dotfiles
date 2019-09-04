@@ -4,21 +4,24 @@
 brew update
 
 # install languages
-brew install python3
 brew install python2
+brew install python3
 
 # install tools
 brew install tree
-brew install git
 brew install parallel
 brew install rename
 brew install ssh-copy-id
-# brew install open-babel
+brew install open-babel
 
-# install programs
+# install Cask programs
 brew cask install google-chrome
 brew cask install visual-studio-code
 brew cask install miniconda
 brew cask install google-backup-and-sync
 brew cask install divvy
 brew cask install iterm2
+
+# install fonts
+brew tap homebrew/cask-fonts
+brew cask install font-inconsolata-for-powerline
