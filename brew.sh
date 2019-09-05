@@ -5,7 +5,7 @@ brew update
 
 # install languages
 brew install python2
-brew install python3
+brew install python
 
 # install tools
 brew install tree
