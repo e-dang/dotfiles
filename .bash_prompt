@@ -67,7 +67,7 @@ prompt_git() {
 
 		[ -n "${s}" ] && s="${s}";
 
-		echo -e "${1}${branchName}${2}${s}${3}";
+		echo -e "${1}${branchName}${2}${s}${3} ";
 	else
 		return;
 	fi;
@@ -79,6 +79,6 @@ PS1+="\[${blue}\]\u";                   # user
 PS1+="\[${red}\]@";
 PS1+="\[${cyan}\]\h ";		            # host
 PS1+="\[${green}\]\W "; 		        # current directory
-PS1+="\$(prompt_git \"\[${white}\][\[${violet}\]\" \[${white}\]\|\"\[${blue}\]\")"; # Git repository details
-PS1+="\[${white}\]] ${icon_next} \[${reset}\]";
+PS1+="\$(prompt_git \"\[${white}\][\[${violet}\]\" \[${white}\]\|\"\[${blue}\]\" \[${white}\]] )"; # Git repository details
+PS1+="\[${white}\]${icon_next} \[${reset}\]";
 export PS1
