@@ -21,6 +21,8 @@ brew cask install miniconda
 brew cask install google-backup-and-sync
 brew cask install divvy
 brew cask install iterm2
+brew cask install mongodb
+brew cask install mongodb-compass
 
 # install fonts
 brew tap homebrew/cask-fonts
