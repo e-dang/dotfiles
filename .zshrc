@@ -96,7 +96,12 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias zshconfig="vscn ~/.zshrc"
 alias ohmyzsh="vscn ~/.oh-my-zsh"
-alias ls="ls -hG"
+
+# source dotfiles:
+for file in ./.{aliases,env,path}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
 # Set username for default context, which by default will not be shown.
 DEFAULT_USER=`whoami`
@@ -105,11 +110,9 @@ DEFAULT_USER=`whoami`
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda virtualenv context dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator ram time)
 
-
 # anaconda prompt customization
-# POWERLEVEL9K_PYTHON_ICON
-# POWERLEVEL9K_ANACONDA_BACKGROUND
-# POWERLEVEL9K_ANACONDA_FOREGROUND
+POWERLEVEL9K_ANACONDA_BACKGROUND='darkmagenta'
+POWERLEVEL9K_ANACONDA_FOREGROUND='white'
 
 # virtualenv propmt customization
 VIRTUAL_ENV_DISABLE_PROMPT=1
