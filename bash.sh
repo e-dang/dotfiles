@@ -12,7 +12,7 @@ homedir=$1
 dotfiledir=$2
 
 # list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc bash_prompt inputrc functions aliases"
+files="bash_profile bashrc bash_prompt inputrc functions"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"

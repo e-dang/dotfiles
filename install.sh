@@ -18,7 +18,7 @@ homedir=$1
 dotfiledir=${homedir}/.dotfiles
 
 # link misc. dotfiles
-files="pylintrc hushlogin gitignore env"
+files="pylintrc hushlogin gitignore env aliases"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -45,3 +45,7 @@ done
 
 # Install and customize zsh
 ./zsh.sh $homedir $dotfiledir
+
+# Initialize conda for bash and zsh
+conda init zsh bash
+conda config --set auto_activate_base false
