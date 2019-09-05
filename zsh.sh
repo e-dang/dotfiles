@@ -29,3 +29,6 @@ for file in ${files}; do
     echo "Creating symlink to $file in home directory."
     ln -sf ${dotfiledir}/.${file} ${homedir}/.${file}
 done
+
+# change default shell to zsh
+chsh --shell $(which zsh)
