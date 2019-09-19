@@ -4,8 +4,8 @@
 brew update
 
 # install languages
-brew install python2
 brew install python
+brew install python2
 
 # install tools
 brew install tree
