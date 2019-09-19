@@ -1,0 +1,11 @@
+MacOS Defaults
+    change time in status bar to show date
+    change Finder window to start on documents and show harddrive
+    change to dark mode by default
+    change to hide dock automatically
+    adjust type repeat speed
+    change scroll directions to not natural
+    show battery percentage
+
+.path
+    source paths so it is not sourced before conda
