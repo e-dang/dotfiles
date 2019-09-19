@@ -18,7 +18,7 @@ homedir=$1
 dotfiledir=${homedir}/.dotfiles
 
 # link misc. dotfiles
-files="pylintrc hushlogin gitignore env aliases"
+files="pylintrc hushlogin gitignore env aliases path"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
