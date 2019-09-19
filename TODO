@@ -6,6 +6,7 @@ MacOS Defaults
     adjust type repeat speed
     change scroll directions to not natural
     show battery percentage
+    ensure .DS_store is ignored globally
 
 .path
     source paths so it is not sourced before conda
