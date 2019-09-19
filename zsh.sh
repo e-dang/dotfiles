@@ -31,4 +31,4 @@ for file in ${files}; do
 done
 
 # change default shell to zsh
-chsh --shell $(which zsh)
+chsh -s $(which zsh)
