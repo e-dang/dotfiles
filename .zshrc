@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias zshconfig="vscn ~/.zshrc"
 alias ohmyzsh="vscn ~/.oh-my-zsh"
+alias ls="ls -hG"
+alias ve="source .venv/bin/activate"
 
 # source dotfiles:
 for file in ./.{aliases,env,path}; do
@@ -116,6 +118,8 @@ POWERLEVEL9K_ANACONDA_FOREGROUND='white'
 
 # virtualenv propmt customization
 VIRTUAL_ENV_DISABLE_PROMPT=1
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='darkmagenta'
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='white'
 
 # dir prompt customization
 POWERLEVEL9K_DIR_HOME_FOREGROUND='white'
