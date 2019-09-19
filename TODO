@@ -1,5 +1,6 @@
 MacOS Defaults
     change time in status bar to show date
+    change default Finder window size to be larger
     change Finder window to start on documents and show harddrive
     change to dark mode by default
     change to hide dock automatically
@@ -7,6 +8,7 @@ MacOS Defaults
     change scroll directions to not natural
     show battery percentage
     ensure .DS_store is ignored globally
+    dont show open apps next to downloads and trash can
 
 .path
     source paths so it is not sourced before conda
