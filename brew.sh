@@ -27,3 +27,7 @@ brew cask install mongodb-compass
 # install fonts
 brew tap homebrew/cask-fonts
 brew cask install font-inconsolata-for-powerline
+
+# install drivers
+brew tap homebrew/cask-drivers
+brew cask install logitech-options
