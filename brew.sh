@@ -16,6 +16,7 @@ brew install open-babel
 
 # install Cask programs
 brew cask install google-chrome
+brew cask install firefox
 brew cask install visual-studio-code
 brew cask install miniconda
 brew cask install google-backup-and-sync
