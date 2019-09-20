@@ -34,5 +34,5 @@ brew cask install logitech-options
 # install mongodb
 brew tap mongodb/brew
 brew install mongodb-community
-mkdir -p /data/db
+sudo mkdir -p /data/db
 sudo chown -R `id -un` /data/db
