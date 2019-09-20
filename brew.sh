@@ -21,7 +21,6 @@ brew cask install miniconda
 brew cask install google-backup-and-sync
 brew cask install shiftit
 brew cask install iterm2
-brew cask install mongodb
 brew cask install mongodb-compass
 
 # install fonts
@@ -31,3 +30,9 @@ brew cask install font-inconsolata-for-powerline
 # install drivers
 brew tap homebrew/cask-drivers
 brew cask install logitech-options
+
+# install mongodb
+brew tap mongodb/brew
+brew install mongodb-community
+mkdir -p /data/db
+sudo chown -R `id -un` /data/db
