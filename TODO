@@ -13,3 +13,6 @@ MacOS Defaults
 
 .path
     source paths so it is not sourced before conda
+
+brew
+    add cmake
