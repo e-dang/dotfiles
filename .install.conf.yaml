@@ -16,6 +16,16 @@
     ~/.shell:
     ~/.zshrc:
 
+- brew:
+    - tree
+    - parallel
+    - ssh-copy-id
+    - cmake
+
+- cask:
+    - visual-studio-code
+    - virtualbox
+
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive

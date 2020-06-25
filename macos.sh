@@ -5,7 +5,6 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # save defaults to file in settings folder
-echo "BASH SOURCE OF MACOS.sh ${BASH_SOURCE[0]}"
 defaults read > ${BASH_SOURCE[0]}/settings/macos_defaults.txt
 
 # Ask for the administrator password upfront
