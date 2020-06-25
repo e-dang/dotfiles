@@ -1,21 +1,21 @@
 language: python
+os: osx
+osx_image: xcode11
 python:
-  - "2.7"
-  - "pypy"
-  - "3.4"
-  - "3.5"
-  - "3.6"
   - "3.7"
-  - "3.8"
-  - "nightly"
-  - "pypy3"
+  # - "2.7"
+  # - "pypy"
+  # - "3.4"
+  # - "3.5"
+  # - "3.6"
+  # - "nightly"
 
 sudo: false
 
 before_script:
   - mkdir -p ~/dotfiles-install-dir
+  - ls -la
+  - pwd
 
 script:
   - HOME=~/dotfiles-install-dir ./install
-# os: osx
-# osx_image: xcode11
