@@ -9,4 +9,4 @@ before_script:
   - HOME=~/install-dir
 
 script:
-  - ./install.sh ${HOME}
+  - ./install.sh $(pwd)
