@@ -3,5 +3,5 @@
 	url = https://github.com/anishathalye/dotbot.git
 	ignore = dirty
 [submodule "dotbot_plugins/dotbot-brew"]
-	path = dotbot_plugins/dotbot-brew
+	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
