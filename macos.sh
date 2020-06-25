@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-echo "ENTERED MACOS SCRIPT"
-
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
 # save defaults to file in settings folder
-defaults read > ${BASH_SOURCE[0]}/settings/macos_defaults.txt
+defaults read > settings/macos_defaults.txt
 
 # Ask for the administrator password upfront
 sudo -v
