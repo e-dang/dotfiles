@@ -1,6 +1,6 @@
 language: python
-os: osx
-osx_image: xcode11
+# os: osx
+# osx_image: xcode11
 python:
   - "3.7"
   # - "2.7"
