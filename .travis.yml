@@ -13,5 +13,5 @@ script:
   - HOME=~/dotfiles-install-dir ./install
 
 after_script:
-  - l settings
+  - ls -la settings
   - which tree
