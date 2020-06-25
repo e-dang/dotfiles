@@ -1,14 +1,6 @@
-language: python
-# os: osx
-# osx_image: xcode11
-python:
-  - "3.7"
-  # - "2.7"
-  # - "pypy"
-  # - "3.4"
-  # - "3.5"
-  # - "3.6"
-  # - "nightly"
+language: shell
+os: osx
+osx_image: xcode11
 
 sudo: false
 
