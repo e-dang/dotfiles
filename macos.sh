@@ -1,19 +1,12 @@
 #!/bin/bash
 
-# check for passed argument
-if [ "$#" -ne 1 ]; then
-    echo "Usage: install.sh <home_directory>"
-    exit 1
-fi
-
-dotfiledir=$1
-
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
 # save defaults to file in settings folder
-defaults read > ${dotfiledir}/settings/macos_defaults.txt
+echo "BASH SOURCE OF MACOS.sh ${BASH_SOURCE[0]}"
+defaults read > ${BASH_SOURCE[0]}/settings/macos_defaults.txt
 
 # Ask for the administrator password upfront
 sudo -v
