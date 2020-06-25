@@ -20,4 +20,4 @@
     - git submodule sync --recursive
     # the following have to run after linking ~/.gitconfig
     - git update-submodules
-    - ./macos.sh ${HOME}/.dotfiles/
+    - ./macos.sh .
