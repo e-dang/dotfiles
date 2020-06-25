@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+echo "ENTERED MACOS SCRIPT"
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
