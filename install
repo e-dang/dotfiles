@@ -2,6 +2,8 @@
 
 set -e
 
+INSTALL_FONTS_SYSTEM=true
+
 CONFIG=".install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
