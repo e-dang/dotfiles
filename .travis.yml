@@ -2,7 +2,7 @@ language: shell
 os: osx
 osx_image: xcode11
 
-sudo: false
+sudo: true
 
 before_script:
   - mkdir -p ~/dotfiles-install-dir
