@@ -15,6 +15,9 @@
     ~/.inputrc:
     ~/.shell:
     ~/.zshrc:
+    ~/.config/.pylintrc:
+    ~/.config/.condarc:
+    ~/.config/.clang-format:
 
 - brew:
     - tree
@@ -38,6 +41,10 @@
     fabiospampinato.vscode-highlight:
       status: install
     redhat.vscode-yaml:
+      status: install
+    twxs.cmake:
+      status: install
+    ms-vscode.cmake-tools:
       status: install
 
 - shell:

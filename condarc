@@ -1,0 +1,8 @@
+auto_activate_base: false
+auto_update_conda: false
+channels:
+  - conda-forge
+  - defaults
+create_default_packages:
+  - autopep8
+  - pylint
