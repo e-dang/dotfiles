@@ -52,4 +52,4 @@
     - git submodule sync --recursive
     - git submodule update --init --recursive
     - ./macos.sh
-    - chsh -s $(which zsh)
+    - sudo chsh -s $(which zsh)
