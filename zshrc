@@ -1,45 +1,25 @@
-# Taken from: https://github.com/anishathalye/dotfiles/blob/master/zshrc
+# Based off: https://github.com/anishathalye/dotfiles/blob/master/zshrc
 
 # Functions
 source ~/.shell/functions.sh
 
-# Allow local customizations in the ~/.shell_local_before file
-if [ -f ~/.shell_local_before ]; then
-    source ~/.shell_local_before
-fi
-
-# Allow local customizations in the ~/.zshrc_local_before file
-if [ -f ~/.zshrc_local_before ]; then
-    source ~/.zshrc_local_before
-fi
-
-# External plugins (initialized before)
+# External plugins
 source ~/.zsh/plugins_before.zsh
 
-# Settings
-source ~/.zsh/settings.zsh
-
 # Custom Environment Variables
-source ~/.shell/env.sh
+source ~/.zsh/env.sh
 
 # Custom PATH
 source ~/.shell/path.sh
 
-# Aliases
+# Custom Aliases
 source ~/.shell/aliases.sh
 
 # Custom prompt
 source ~/.zsh/prompt.zsh
 
-# External plugins (initialized after)
+# Settings
+source ~/.zsh/settings.zsh
+
+# External plugins
 source ~/.zsh/plugins_after.zsh
-
-# Allow local customizations in the ~/.shell_local_after file
-if [ -f ~/.shell_local_after ]; then
-    source ~/.shell_local_after
-fi
-
-# Allow local customizations in the ~/.zshrc_local_after file
-if [ -f ~/.zshrc_local_after ]; then
-    source ~/.zshrc_local_after
-fi
