@@ -6,4 +6,4 @@
 - clean: ["~", "~/.config"]
 
 - link:
-  ~/.dotfiles: ""
+    ~/.dotfiles: ""
