@@ -23,3 +23,13 @@
     ms-vscode.cmake-tools:
       status: install
       insiders: false
+
+- link:
+    ~/Library/Application\ Support/Code/User/keybindings.json:
+      if: '["$OSTYPE" == "darwin"*]'
+      force: true
+      path: ~/.dotfiles/settings/vscode_keybindings.json
+    ~/Library/Application\ Support/Code/User/settings.json:
+      if: '["$OSTYPE" == "darwin"*]'
+      force: true
+      path: ~/.dotfiles/settings/vscode_settings.json
