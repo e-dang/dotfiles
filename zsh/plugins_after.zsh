@@ -1,7 +1,6 @@
 # External plugins (initialized after)
 
 # Syntax highlighting
-
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -31,7 +30,9 @@ if [[ "$(tput colors)" == "256" ]]; then
 fi
 
 # dircolors
-
 if [[ "$(tput colors)" == "256" ]]; then
     eval $(dircolors =(cat ~/.shell/plugins/dircolors-solarized/dircolors.256dark)) #~/.shell/dircolors.extra))
 fi
+
+# powerlevel10k
+[[ ! -f ~/.zsh/plugins/p10k.zsh ]] || source ~/.zsh/plugins/p10k.zsh
