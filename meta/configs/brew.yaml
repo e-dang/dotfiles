@@ -1,0 +1,9 @@
+- brew:
+    - tree
+    # - parallel
+    # - ssh-copy-id
+    # - cmake
+
+- cask:
+    - visual-studio-code
+    # - virtualbox

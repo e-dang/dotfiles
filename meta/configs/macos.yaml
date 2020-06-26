@@ -1,0 +1,2 @@
+- shell:
+    - [./macos.sh, Changing MacOS defaults...]

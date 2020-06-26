@@ -1,0 +1,4 @@
+- link:
+    ~/.config/.pylintrc:
+    ~/.condarc:
+    ~/.clang-format:
