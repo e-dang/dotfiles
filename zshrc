@@ -24,6 +24,7 @@ source ~/.zsh/plugins_before.zsh
 
 # External settings
 # source ~/.shell/external.sh
+bind -f ~/.inputrc
 
 source ~/.shell/env.sh
 
