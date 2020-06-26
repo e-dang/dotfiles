@@ -17,11 +17,8 @@
     ~/.zsh:
     ~/.zshrc:
     ~/.config/.pylintrc:
-    ~/.config/.condarc:
-    ~/.config/.clang-format:
-
-- tap:
-    - caskroom/fonts
+    ~/.condarc:
+    ~/.clang-format:
 
 - brew:
     - tree
@@ -31,7 +28,6 @@
 
 - cask:
     - visual-studio-code
-    - font-meslo-nerd-font
     # - virtualbox
 
 - vscode:
@@ -56,4 +52,4 @@
     - git submodule sync --recursive
     - git submodule update --init --recursive
     - ./macos.sh
-    - sudo chsh -s $(which zsh)
+    - chsh -s $(which zsh)
