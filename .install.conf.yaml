@@ -20,6 +20,9 @@
     ~/.config/.condarc:
     ~/.config/.clang-format:
 
+- tap:
+    - caskroom/fonts
+
 - brew:
     - tree
     # - parallel
@@ -28,6 +31,7 @@
 
 - cask:
     - visual-studio-code
+    - font-meslo-nerd-font
     # - virtualbox
 
 - vscode:
