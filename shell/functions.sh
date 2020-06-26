@@ -16,3 +16,20 @@ function man()
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_remove() {
+    PATH=$(echo -n "$PATH" | awk -v RS=: -v ORS=: "\$0 != \"$1\"" | sed 's/:$//')
+}
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_append() {
+    path_remove "$1"
+    PATH="${PATH:+"$PATH:"}$1"
+}
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_prepend() {
+    path_remove "$1"
+    PATH="$1${PATH:+":$PATH"}"
+}
