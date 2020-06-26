@@ -17,3 +17,6 @@
 [submodule "zsh/plugins/powerlevel10k"]
 	path = zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "shell/plugins/dircolors-solarized"]
+	path = shell/plugins/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
