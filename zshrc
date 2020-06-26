@@ -17,17 +17,12 @@ fi
 source ~/.zsh/plugins_before.zsh
 
 # Settings
-# source ~/.zsh/settings.zsh
+source ~/.zsh/settings.zsh
 
-# Bootstrap
-# source ~/.shell/bootstrap.sh
-
-# External settings
-# source ~/.shell/external.sh
-bind -f ~/.inputrc
-
+# Custom Environment Variables
 source ~/.shell/env.sh
 
+# Custom PATH
 source ~/.shell/path.sh
 
 # Aliases
