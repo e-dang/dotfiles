@@ -11,14 +11,20 @@ if [ -z ${INSTALL_FONTS_SYSTEM} ]; then
 fi
 
 FONTS_DIR=${BASEDIR}/fonts
-for file in ${FONTS_DIR}/*.ttf; do
-    echo ${file}
-    if [ ${INSTALL_FONTS_SYSTEM} = true ]; then
-        sudo cp -v "${file}" "/Library/Fonts/$(basename "${file}")"
-    else
-        cp -v "${file}" "~/Library/Fonts/$(basename "${file}")"
-    fi
-done
+
+# MacOS specific install location
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    for file in ${FONTS_DIR}/*.ttf; do
+        echo ${file}
+        if [ ${INSTALL_FONTS_SYSTEM} = true ]; then
+            sudo cp -v "${file}" "/Library/Fonts/$(basename "${file}")"
+        else
+            cp -v "${file}" "~/Library/Fonts/$(basename "${file}")"
+        fi
+    done
+else
+    echo "Font installation could not be completed! Still need to implement for OS: ${OSTYPE}"
+fi
 
 unset FONTS_DIR
 unset INSTALL_FONTS_SYSTEM
