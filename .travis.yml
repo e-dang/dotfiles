@@ -3,6 +3,7 @@ os: osx
 osx_image: xcode11
 
 sudo: true
+paranoid_mode: false
 
 before_script:
   - mkdir -p ~/dotfiles-install-dir
