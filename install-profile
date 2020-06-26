@@ -30,5 +30,5 @@ echo ${CONFIGS}
 for config in ${CONFIGS} ${@}; do
 	echo -e "\nConfigure $config"
 	configFile="$(mktemp)" ; echo -e "$(<"${BASEDIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}")\n$(<"${BASEDIR}/${META_DIR}/${CONFIG_DIR}/${config}${CONFIG_SUFFIX}")" > "$configFile"
-	"${BASEDIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "$configFile" ; rm -f "$configFile"
+	"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "$configFile" --plugin-dir dotbot-brew --plugin-dir dotbot-vscode ; rm -f "$configFile"
 done
