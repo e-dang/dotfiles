@@ -1,4 +1,5 @@
 - link:
     ~/.config/.pylintrc:
+    ~/.config/pycodestyle:
     ~/.condarc:
     ~/.clang-format:
