@@ -1,3 +1,6 @@
+# Allow for variable/function substitution in prompt
+setopt prompt_subst
+
 # Better history
 bindkey "^R" history-incremental-search-backward
 bindkey '\e[A' history-search-backward
