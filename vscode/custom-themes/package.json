@@ -1,0 +1,22 @@
+{
+    "name": "custom-themes",
+    "displayName": "Custom Themes",
+    "description": "Custom themes",
+    "version": "1.0.0",
+    "publisher": "Eric Dang",
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Custom Atom One Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/CustomAtomOneDark.json"
+            }
+        ]
+    }
+}

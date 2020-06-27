@@ -28,8 +28,10 @@
     ~/Library/Application\ Support/Code/User/keybindings.json:
       if: '["$OSTYPE" == "darwin"*]'
       force: true
-      path: ~/.dotfiles/settings/vscode_keybindings.json
+      path: ~/.dotfiles/vscode/keybindings.json
     ~/Library/Application\ Support/Code/User/settings.json:
       if: '["$OSTYPE" == "darwin"*]'
       force: true
-      path: ~/.dotfiles/settings/vscode_settings.json
+      path: ~/.dotfiles/vscode/settings.json
+    ~/.vscode/extensions/ericdang.custom-themes:
+      path: ~/.dotfiles/vscode/custom-themes
