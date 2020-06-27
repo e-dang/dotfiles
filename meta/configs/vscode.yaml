@@ -5,22 +5,28 @@
     ms-vscode.cpptools:
       status: install
       insiders: false
+    twxs.cmake:
+      status: install
+      insiders: false
+    ms-vscode.cmake-tools:
+      status: install
+      insiders: false
     file-icons.file-icons:
+      status: install
+      insiders: false
+    eamodio.gitlens:
       status: install
       insiders: false
     njpwerner.autodocstring:
       status: install
       insiders: false
-    fabiospampinato.vscode-highlight:
+    cschlosser.doxdocgen:
       status: install
       insiders: false
     redhat.vscode-yaml:
       status: install
       insiders: false
-    twxs.cmake:
-      status: install
-      insiders: false
-    ms-vscode.cmake-tools:
+    yzhang.markdown-all-in-one:
       status: install
       insiders: false
 
