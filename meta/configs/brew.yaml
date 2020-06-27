@@ -1,9 +1,24 @@
+- tap:
+    - cask-drivers
+
 - brew:
+    - git
+    - python
+    - python2
+    - llvm
+    - gcc
+    - cmake
     - tree
-    # - parallel
-    # - ssh-copy-id
-    # - cmake
+    - parallel
+    - ssh-copy-id
 
 - cask:
     - visual-studio-code
-    # - virtualbox
+    - miniconda
+    - iterm2
+    - google-chrome
+    - google-backup-and-sync
+    - firefox
+    - shiftit
+    - virtualbox
+    - logitech-options
