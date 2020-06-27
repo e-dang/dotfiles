@@ -6,6 +6,8 @@ sudo: true
 paranoid_mode: false
 
 before_script:
+  - brew tap
+  - 'brew() { if [[ $@ == *"virtualbox"* || $@ == *"llvm"* || $@ == *"gcc"* ]]; then return 0; else command "$@"; fi; }'
   - mkdir -p ~/dotfiles-install-dir
 
 script:
