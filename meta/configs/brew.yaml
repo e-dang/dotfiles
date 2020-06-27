@@ -1,5 +1,5 @@
 - tap:
-    - cask-drivers
+    - homebrew/cask-drivers
 
 - brew:
     - git
