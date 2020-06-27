@@ -1,0 +1,6 @@
+To install theme:
+    1. Open iTerm2
+    2. Preferences
+    3. Create New Profile
+    4. Select "Other Actions"
+    5. Click "Import JSON Profiles" and import a profile in this directory
