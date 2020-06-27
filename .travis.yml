@@ -6,9 +6,7 @@ sudo: true
 paranoid_mode: false
 
 before_script:
-  - brew tap
-  - 'brew() { if [[ $@ == *"virtualbox"* || $@ == *"llvm"* || $@ == *"gcc"* ]]; then return 0; else command "$@"; fi; }'
   - mkdir -p ~/dotfiles-install-dir
 
 script:
-  - HOME=~/dotfiles-install-dir ./install-profile macos
+  - HOME=~/dotfiles-install-dir && 'brew() { if [[ $@ == *"virtualbox"* || $@ == *"llvm"* || $@ == *"gcc"* ]]; then return 0; else command "$@"; fi; }' && ./install-profile macos
