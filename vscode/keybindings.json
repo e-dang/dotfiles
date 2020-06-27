@@ -1,19 +1,35 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "cmd+i",
-        "command": "code-runner.run"
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+alt+n",
-        "command": "-code-runner.run"
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "ctrl+c",
-        "command": "code-runner.stop"
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     },
     {
-        "key": "ctrl+alt+m",
-        "command": "-code-runner.stop"
+        "key": "alt+cmd+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+cmd+right",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+cmd+down",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+cmd+up",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
     }
 ]

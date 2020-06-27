@@ -1,17 +1,14 @@
 {
-    "python.pythonPath": "/anaconda3/bin/python",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.formatting.autopep8Args": [
-        "--max-line-length=120"
-    ],
-    "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.fontFamily": "Inconsolata for Powerline",
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.env.osx": {
-        "PATH": ""
-    },
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.startOnNewLine": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.clang_format_path": "/usr/local/bin/clang-format",
+    "cmake.configureOnOpen": true,
+    "editor.highlightActiveIndentGuide": true,
+    "editor.renderIndentGuides": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.minimap.maxColumn": 80,
     "editor.acceptSuggestionOnEnter": "off",
@@ -21,104 +18,27 @@
     "editor.rulers": [
         120
     ],
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
     "files.trimTrailingWhitespace": true,
-    "workbench.iconTheme": "file-icons",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.dataScience.askForKernelRestart": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.fontFamily": "Inconsolata for Powerline",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.env.osx": {
+        "PATH": ""
+    },
+    "window.zoomLevel": 0,
     "workbench.settings.editor": "json",
     "workbench.settings.useSplitJSON": true,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorCustomizations": {
-        "terminal.ansiYellow": "#f9a824",
-        "terminal.ansiBlack": "#1E1E1E",
-        "terminal.ansiWhite": "#eaeae9",
-        "terminal.ansiGreen": "#558b2e"
-    },
-    "autoDocstring.docstringFormat": "google",
-    "autoDocstring.startOnNewLine": true,
-    "code-runner.executorMap": {
-        "python": "$pythonPath -u $fullFileName"
-    },
-    "code-runner.showExecutionMessage": false,
-    "code-runner.clearPreviousOutput": true,
-    "highlight.regexes": {
-        // matches calling objects not in comments or strings
-        "(?<!#.+)(?<!'|/)(\\b[a-zA-Z_]+)(\\.)(?!\\s|[.()'\"])": {
-            "regexFlags": "g",
-            "filterLanguageRegex": "python",
-            "filterFileRegex": ".py",
-            "decorations": [
-                {
-                    "color": "#E06657"
-                },
-                {}
-            ]
-        },
-        // matches object attributes not in comments or strings
-        "(?<!#.+)(?<!')(\\.)([a-zA-Z_]+)(?=\\s|[\\[\\]\\),}:])": {
-            "regexFlags": "g",
-            "filterLanguageRegex": "python",
-            "filterFileRegex": ".py",
-            "decorations": [
-                {},
-                {
-                    "color": "#5ba1b0"
-                },
-                {}
-            ]
-        }
-    },
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "meta.function-call.generic.python, entity.name.function.python",
-                "settings": {
-                    "foreground": "#35A6F0"
-                }
-            },
-            {
-                "scope": "string.quoted.docstring.single.python, comment.line.number-sign.python, string.quoted.docstring.multi.python, string.quoted.single.python",
-                "settings": {
-                    "foreground": "#6a9955ff"
-                }
-            },
-            {
-                "scope": "constant.other.caps.python, constant.numeric.dec.python, variable.parameter.function-call.python, constant.language.python, variable.parameter.function.language.python",
-                "settings": {
-                    "foreground": "#cf8e51"
-                }
-            },
-            {
-                "scope": "punctuation.definition.arguments.begin.python, punctuation.definition.arguments.end.python, variable.legacy.builtin.python, source.python",
-                "settings": {
-                    "foreground": "#ABB2BF"
-                }
-            },
-            {
-                "scope": "keyword.control.import.python, storage.type.function.python, keyword.operator.logical.python, keyword.control.flow.python",
-                "settings": {
-                    "foreground": "#b670de"
-                }
-            },
-            {
-                "scope": "constant.character.escape.python, support.function.builtin.python, support.type.python",
-                "settings": {
-                    "foreground": "#19e9d8"
-                }
-            },
-            {
-                "scope": "comment.line.number-sign.python",
-                "settings": {
-                    "foreground": "#565a5a"
-                }
-            },
-            {
-                "scope": "support.function.magic.python, support.variable.magic.python",
-                "settings": {
-                    "foreground": "#fff974"
-                }
-            }
-        ]
-    },
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0,
+    "workbench.editor.limit.enabled": true,
+    "workbench.colorTheme": "Custom Atom One Dark",
+    "workbench.iconTheme": "file-icons",
+    "yaml.format.printWidth": 120,
+    "yaml.format.proseWrap": "never"
 }
