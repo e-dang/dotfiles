@@ -1,3 +1,6 @@
+# Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
+setopt extended_glob
+
 # Allow for variable/function substitution in prompt
 setopt prompt_subst
 
