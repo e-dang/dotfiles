@@ -1,21 +1,22 @@
+# Based off: https://github.com/anishathalye/dotfiles/blob/master/zshrc
 
-# source the shell dotfiles
-for file in ./.shell/{aliases.sh,functions.sh,env.sh,path.sh}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
+# Functions
+source ~/.shell/functions.sh
 
-# source the bash dotfiles
-for file in ./.bash/{bash_prompt.sh}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
+# Custom Environment Variables
+source ~/.bash/env.sh
 
-unset file
+# Custom PATH
+source ~/.shell/path.sh
 
-# key bindings
-bind -f ./.inputrc
+# Custom Aliases
+source ~/.shell/aliases.sh
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+# Custom prompt
+source ~/.bash/prompt.sh
 
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
+# Settings
+source ~/.bash/settings.sh
+
+# External plugins
+source ~/.shell/plugins.sh
