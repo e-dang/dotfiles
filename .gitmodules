@@ -26,3 +26,6 @@
 [submodule "vim/pack/plugins/start/nerdcommenter"]
 	path = vim/pack/plugins/start/nerdcommenter
 	url = https://github.com/preservim/nerdcommenter.git
+[submodule "vim/pack/plugins/start/vim-multiple-cursors"]
+	path = vim/pack/plugins/start/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
