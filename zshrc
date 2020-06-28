@@ -6,11 +6,11 @@ source ~/.shell/functions.sh
 # External plugins
 source ~/.zsh/plugins_before.zsh
 
-# Custom Environment Variables
-source ~/.zsh/env.zsh
-
 # Custom PATH
 source ~/.shell/path.sh
+
+# Custom Environment Variables
+source ~/.zsh/env.zsh
 
 # Custom Aliases
 source ~/.shell/aliases.sh

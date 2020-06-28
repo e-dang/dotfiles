@@ -3,11 +3,11 @@
 # Functions
 source ~/.shell/functions.sh
 
-# Custom Environment Variables
-source ~/.bash/env.sh
-
 # Custom PATH
 source ~/.shell/path.sh
+
+# Custom Environment Variables
+source ~/.bash/env.sh
 
 # Custom Aliases
 source ~/.shell/aliases.sh
