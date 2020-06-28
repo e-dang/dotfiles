@@ -29,8 +29,5 @@ if [[ "$(tput colors)" == "256" ]]; then
     ZSH_HIGHLIGHT_STYLES[assign]=fg=037
 fi
 
-# dircolors
-source ~/.shell/plugins.sh
-
 # powerlevel10k
-[[ ! -f ~/.zsh/plugins/p10k.zsh ]] || source ~/.zsh/plugins/p10k.zsh
+[[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
