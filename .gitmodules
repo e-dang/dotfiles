@@ -20,3 +20,6 @@
 [submodule "shell/plugins/dircolors-solarized"]
 	path = shell/plugins/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule "iTerm2/one-dark-iterm"]
+	path = iTerm2/one-dark-iterm
+	url = https://github.com/anunez/one-dark-iterm.git
