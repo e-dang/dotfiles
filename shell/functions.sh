@@ -33,3 +33,27 @@ path_prepend() {
     path_remove "$1"
     PATH="$1${PATH:+":$PATH"}"
 }
+
+# Open dotfiles repository
+dfopen() {
+    code ~/.dotfiles
+}
+
+# Update dotfiles from remote
+dfpull() {
+    prev_dir=$(pwd)
+    cd ~/.dotfiles && git pull --ff-only
+    cd ${prev_dir}
+}
+
+# Update dotfiles at remote
+dfpush() {
+    prev_dir=$(pwd)
+    cd ~/.dotfiles && git add . && git commit -m "$@" && git push
+    cd ${prev_dir}
+}
+
+# Output vim cheat sheet
+vcheat() {
+    cat ~/.vim/vim_cheat_sheet.txt
+}
