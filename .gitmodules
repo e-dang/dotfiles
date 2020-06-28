@@ -23,3 +23,6 @@
 [submodule "iTerm2/one-dark-iterm"]
 	path = iTerm2/one-dark-iterm
 	url = https://github.com/anunez/one-dark-iterm.git
+[submodule "vim/pack/plugins/start/nerdcommenter"]
+	path = vim/pack/plugins/start/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter.git
