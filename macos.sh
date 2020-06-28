@@ -5,8 +5,10 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # save defaults to file in settings folder
-mkdir ~/.dotfiles/settings &&
-defaults read > ~/.dotfiles/settings/macos_defaults.txt
+if ! [[ -f  ~/.dotfiles/settings/macos_defaults.txt ]]; then
+    mkdir -p ~/.dotfiles/settings &&
+    defaults read > ~/.dotfiles/settings/macos_defaults.txt
+fi
 
 # Ask for the administrator password upfront
 sudo -v
@@ -25,6 +27,12 @@ dscacheutil -flushcache
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
+# Show battery percentage in menu bar
+defaults write com.apple.menuextra.battery ShowPercent YES
+
+# Minimize windows into their application’s icon. This (confusingly) stops open apps from appearing twice on the dock
+defaults write com.apple.dock minimize-to-application -bool true
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -32,6 +40,15 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Set sidebar icon size to large
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+
+# Set clock to digital in status bar
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+
+# Set data and time format to something like: Thu Aug 18 23:46
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d HH:mm"
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -44,7 +61,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Increase sound quality for Bluetooth headphones/headsets
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -82,6 +99,16 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
