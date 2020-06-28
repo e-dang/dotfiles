@@ -12,6 +12,7 @@
     - ssh-copy-id
     - open-mpi
     - boost
+    - docker
 
 - cask:
     - visual-studio-code
