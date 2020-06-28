@@ -7,7 +7,7 @@ source ~/.shell/functions.sh
 source ~/.zsh/plugins_before.zsh
 
 # Custom Environment Variables
-source ~/.zsh/env.sh
+source ~/.zsh/env.zsh
 
 # Custom PATH
 source ~/.shell/path.sh
