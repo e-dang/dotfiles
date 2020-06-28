@@ -32,11 +32,11 @@
 
 - link:
     ~/Library/Application\ Support/Code/User/keybindings.json:
-      if: '["$OSTYPE" == "darwin"*]'
+      if: echo ${OSTYPE} | grep "darwin"
       force: true
       path: ~/.dotfiles/vscode/keybindings.json
     ~/Library/Application\ Support/Code/User/settings.json:
-      if: '["$OSTYPE" == "darwin"*]'
+      if: echo ${OSTYPE} | grep "darwin"
       force: true
       path: ~/.dotfiles/vscode/settings.json
     ~/.vscode/extensions/ericdang.custom-themes:
