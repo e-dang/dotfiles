@@ -12,7 +12,6 @@
     - ssh-copy-id
     - open-mpi
     - boost
-    - docker
 
 - cask:
     - visual-studio-code
@@ -23,5 +22,6 @@
     - firefox
     - shiftit
     - logitech-options
+    - vagrant
+    - docker
     # - virtualbox  # intalling this causes script to fail for MacOS >=10.13 because it is a kernel extension
-    # - vagrant # same as above
