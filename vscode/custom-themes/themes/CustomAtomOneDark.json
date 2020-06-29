@@ -386,7 +386,6 @@
         "terminal.ansiYellow": "#d29a61",
         "terminal.border": "#282c34",
         "terminal.foreground": "#abb1bf",
-        "terminal.selectionBackground": "#3e4451",
         "terminalCursor.foreground": "#528bff"
         //"textBlockQuote.background": "#7f7f7f1a",
         //"textBlockQuote.border": "#007acc80",
