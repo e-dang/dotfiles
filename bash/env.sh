@@ -1,3 +1,3 @@
-export HISTFILE="$HOME/.bash_history"
+export HISTFILE="$HOME/.cache/bash/.bash_history"
 
 source ~/.shell/env.sh
