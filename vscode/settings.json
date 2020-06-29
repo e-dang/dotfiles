@@ -15,12 +15,15 @@
     "editor.quickSuggestionsDelay": 5,
     "editor.formatOnSave": true,
     "editor.renderWhitespace": "none",
+    "editor.fontFamily": "MesloLGS NF",
     "editor.rulers": [
         120
     ],
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.trimTrailingWhitespace": true,
+    "git.detectSubmodules": true,
+    "git.detectSubmodulesLimit": 9999,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.dataScience.askForKernelRestart": false,
@@ -28,6 +31,7 @@
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/bin/zsh",
     "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.rendererType": "auto",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.env.osx": {
         "PATH": ""
