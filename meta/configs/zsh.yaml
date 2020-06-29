@@ -7,4 +7,4 @@
     ~/.zshrc:
 
 - shell:
-    - [sudo chsh -s $(which zsh), Making zsh the default shell...]
+    - [chsh -s $(which zsh), Making zsh the default shell...]
