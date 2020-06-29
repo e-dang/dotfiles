@@ -11,5 +11,6 @@ before_script:
 script:
   - HOME=~/dotfiles-install-dir
   - sed -i '' '/virtualbox/d' ./meta/configs/brew.yaml
+  - sed -i '' '/- shell:/d' ./meta/configs/zsh.yaml
   - sed -i '' '/chsh/d' ./meta/configs/zsh.yaml
   - ./install-profile macos
