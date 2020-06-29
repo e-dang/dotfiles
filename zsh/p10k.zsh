@@ -341,6 +341,9 @@
   # Change the value of this parameter to show a different icon.
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
 
+  # Causes number of untracked files to display as if git config "status.showuntrackedfiles all" is set
+  typeset -g POWERLEVEL9K_VCS_RECURSE_UNTRACKED_DIRS=true
+
   # Formatter for Git status.
   #
   # Example output: master ⇣42⇡42 *42 merge ~42 +42 !42 ?42.
