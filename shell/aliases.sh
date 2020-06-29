@@ -4,6 +4,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias tree='tree -a'
+
 # Always enable colored `ls` output with human readable sizes and add ls shortcut
 if [[ $(brew list | grep "coreutils") ]] 2> /dev/null; then
     alias ls='gls -Gh'
@@ -24,11 +26,9 @@ alias grep='grep --color=auto'
 alias path='echo -e ${PATH//:/\\n}'
 
 # If homebrew installs GCC, use it when executing gcc/g++ commands. Note that library and include paths will need to be specified manually. TAGS:
-if [[ $(brew list | grep "gcc") ]] 2> /dev/null; then
-    MY_HOMEBREW_GCC_VERSION=$(ls $(brew --prefix gcc)/bin | grep "^gcc-.$" | tr -dc '0-9')
-    alias gcc="gcc-${MY_HOMEBREW_GCC_VERSION}"
-    alias cc="gcc-${MY_HOMEBREW_GCC_VERSION}"
-    alias g++="g++-${MY_HOMEBREW_GCC_VERSION}"
-    alias c++="c++-${MY_HOMEBREW_GCC_VERSION}"
-    unset MY_HOMEBREW_GCC_VERSION
+if [[ -d /usr/local/opt/gcc/bin ]]; then
+    alias gcc="gcc-9"
+    alias cc="gcc-9"
+    alias g++="g++-9"
+    alias c++="c++-9"
 fi
