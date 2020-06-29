@@ -16,5 +16,5 @@ setopt histignoredups
 
 # Tab to cycle through auto-completions like in oh-my-zsh
 bindkey "\e[Z" menu-complete
-autoload -Uz compinit && compinit -i
+autoload -Uz compinit && compinit -i -d ~/.cache/zsh/zcompdump-${ZSH_VERSION}
 source ~/.zsh/completion.zsh
