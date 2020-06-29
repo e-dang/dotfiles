@@ -36,20 +36,20 @@ path_prepend() {
 
 # Open dotfiles repository
 dfopen() {
-    code ~/.dotfiles
+    code $(readlink ~/.dotfiles)
 }
 
 # Update dotfiles from remote
 dfpull() {
     prev_dir=$(pwd)
-    cd ~/.dotfiles && git pull --ff-only
+    cd $(readlink ~/.dotfiles) && git pull --ff-only
     cd ${prev_dir}
 }
 
 # Update dotfiles at remote
 dfpush() {
     prev_dir=$(pwd)
-    cd ~/.dotfiles && git add . && git commit -m "$@" && git push
+    cd $(readlink ~/.dotfiles) && git add . && git commit -m "$@" && git push
     cd ${prev_dir}
 }
 
