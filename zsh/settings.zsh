@@ -11,7 +11,6 @@ setopt prompt_subst
 bindkey "^R" history-incremental-search-backward
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
-setopt appendhistory
 setopt incappendhistory
 setopt extendedhistory
 setopt histfindnodups
@@ -19,5 +18,5 @@ setopt histignoredups
 
 # Tab to cycle through auto-completions like in oh-my-zsh
 bindkey "\e[Z" menu-complete
-autoload -Uz compinit && compinit -i -d ~/.cache/zsh/zcompdump-${ZSH_VERSION}
+autoload -Uz compinit && compinit -i -d "${ZSH_CACHE_DIR}/zcompdump-${ZSH_VERSION}"
 source ~/.zsh/completion.zsh
