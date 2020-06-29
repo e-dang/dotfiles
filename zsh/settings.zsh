@@ -1,3 +1,6 @@
+# Allows for cd'ing to directory without having to type cd
+setopt AUTO_CD
+
 # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
 setopt extended_glob
 
