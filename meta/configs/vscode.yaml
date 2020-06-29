@@ -31,11 +31,11 @@
       insiders: false
 
 - link:
-    ~/Library/Application\ Support/Code/User/keybindings.json:
+    ~/Library/Application Support/Code/User/keybindings.json:
       if: echo ${OSTYPE} | grep "darwin"
       force: true
       path: ~/.dotfiles/vscode/keybindings.json
-    ~/Library/Application\ Support/Code/User/settings.json:
+    ~/Library/Application Support/Code/User/settings.json:
       if: echo ${OSTYPE} | grep "darwin"
       force: true
       path: ~/.dotfiles/vscode/settings.json
