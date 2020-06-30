@@ -29,6 +29,12 @@
     yzhang.markdown-all-in-one:
       status: install
       insiders: false
+    coenraads.bracket-pair-colorizer-2:
+      status: install
+      insiders: false
+    mkxml.vscode-filesize:
+      status: install
+      insiders: false
 
 - link:
     ~/Library/Application Support/Code/User/keybindings.json:
