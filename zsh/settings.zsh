@@ -11,6 +11,7 @@ setopt prompt_subst
 bindkey "^R" history-incremental-search-backward
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
+setopt appendhistory
 setopt incappendhistory
 setopt extendedhistory
 setopt histfindnodups
