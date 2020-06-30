@@ -487,7 +487,7 @@
     fi
 
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
-      p10k segment -f 232 -b "${latest}" -i "${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}" -t ${VCS_STATUS_LOCAL_BRANCH//\%/%%}
+      p10k segment -f 232 -b "${latest}" -i " ${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}" -t ${VCS_STATUS_LOCAL_BRANCH//\%/%%}
     fi
 
     (( VCS_STATUS_COMMITS_BEHIND ))      && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_COMMITS_BEHIND}"
