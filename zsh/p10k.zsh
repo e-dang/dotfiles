@@ -476,11 +476,9 @@
     local conflicted=9
 
     local latest
-    if [[ ${VCS_STATUS_COMMITS_BEHIND} || ${VCS_STATUS_COMMITS_AHEAD} || ${VCS_STATUS_PUSH_COMMITS_BEHIND} \
-      > ${VCS_STATUS_PUSH_COMMITS_AHEAD} || ${VCS_STATUS_NUM_STAGED} || ${VCS_STATUS_NUM_UNSTAGED} \
-      > ${VCS_STATUS_NUM_UNTRACKED} || ${VCS_STATUS_STASHES} ]]; then
+    if (( ${VCS_STATUS_COMMITS_BEHIND} || ${VCS_STATUS_COMMITS_AHEAD} || ${VCS_STATUS_PUSH_COMMITS_BEHIND} || ${VCS_STATUS_PUSH_COMMITS_AHEAD} || ${VCS_STATUS_NUM_STAGED} || ${VCS_STATUS_NUM_UNSTAGED} || ${VCS_STATUS_NUM_UNTRACKED} || ${VCS_STATUS_STASHES} )); then
         latest=${modified}
-    elif [[ ${VCS_STATUS_NUM_CONFLICTED} ]]; then
+    elif (( ${VCS_STATUS_NUM_CONFLICTED} )); then
         latest=${conflicted}
     else
         latest=${clean}
