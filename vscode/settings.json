@@ -32,9 +32,6 @@
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "terminal.integrated.rendererType": "auto",
     "terminal.integrated.fontSize": 14,
-    "terminal.integrated.env.osx": {
-        "PATH": ""
-    },
     "window.zoomLevel": 0,
     "workbench.settings.editor": "json",
     "workbench.settings.useSplitJSON": true,
