@@ -428,7 +428,7 @@
                 "entity.other.inherited-class"
             ],
             "settings": {
-                "foreground": "#E5C07B"
+                "foreground": "#56B6C2" // "#E5C07B"
             }
         },
         {
@@ -547,7 +547,8 @@
         },
         {
             "scope": [
-                "variable"
+                "variable",
+                "variable.parameter.function.language.special.self.python"
             ],
             "settings": {
                 "foreground": "#E06C75"
@@ -2151,7 +2152,7 @@
             }
         },
         {
-            "scope": "meta.attribute.python",
+            "scope": "meta.attribute.python,meta.indexed-name.python",
             "settings": {
                 "foreground": "#61AFEF" //#826AED #454E9E
             }
