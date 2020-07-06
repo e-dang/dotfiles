@@ -2146,7 +2146,10 @@
             }
         },
         {
-            "scope": "token.debug-token",
+            "scope": [
+                "token.debug-token",
+                "entity.name.function.decorator.python"
+            ],
             "settings": {
                 "foreground": "#B267E6"
             }
