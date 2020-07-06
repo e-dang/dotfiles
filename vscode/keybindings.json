@@ -23,12 +23,12 @@
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "alt+cmd+down",
+        "key": "alt+cmd+up",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },
     {
-        "key": "alt+cmd+up",
+        "key": "alt+cmd+down",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     }
