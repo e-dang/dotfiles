@@ -35,6 +35,12 @@
     mkxml.vscode-filesize:
       status: install
       insiders: false
+    ms-azuretools.vscode-docker:
+      status: install
+      insiders: false
+    ms-vscode-remote.remote-containers:
+      status: install
+      insiders: false
 
 - link:
     ~/Library/Application Support/Code/User/keybindings.json:
