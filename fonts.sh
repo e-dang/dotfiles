@@ -15,11 +15,19 @@ FONTS_DIR=${BASEDIR}/fonts
 # MacOS specific install location
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${FONTS_DIR}/*.ttf; do
-        echo ${file}
         if [ ${INSTALL_FONTS_SYSTEM} = true ]; then
             sudo cp -v "${file}" "/Library/Fonts/$(basename "${file}")"
         else
             cp -v "${file}" "~/Library/Fonts/$(basename "${file}")"
+        fi
+    done
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    for file in ${FONTS_DIR}/*.ttf; do
+        if [ ${INSTALL_FONTS_SYSTEM} = true ]; then
+            sudo cp -v "${file}" "/usr/local/share/fonts/$(basename "${file}")"
+        else
+            mkdir "${HOME}/.fonts"
+            cp -v "${file}" "${HOME}/.fonts/$(basename "${file}")"
         fi
     done
 else
