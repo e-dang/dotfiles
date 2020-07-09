@@ -19,6 +19,12 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 git submodule update --init --recursive --remote
 
+# change the base config file to be one that forces linking
+if [[ $# -eq 2 && $1 == "-f" ]]; then
+    BASE_CONFIG="base_force"
+    shift
+fi
+
 while IFS= read -r config; do
 	CONFIGS+=" ${config}"
 done < "${META_DIR}/${PROFILES_DIR}/$1"
