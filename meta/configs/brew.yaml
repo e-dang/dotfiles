@@ -12,6 +12,7 @@
     - ssh-copy-id
     - open-mpi
     - boost
+    - coreutils
 
 - cask:
     - visual-studio-code
