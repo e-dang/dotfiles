@@ -3,7 +3,7 @@
     "autoDocstring.startOnNewLine": true,
     "C_Cpp.updateChannel": "Insiders",
     "C_Cpp.clang_format_path": "/usr/local/bin/clang-format",
-    "cmake.configureOnOpen": true,
+    "cmake.configureOnOpen": false,
     "dotfiles.repository": "https://github.com/e-dang/dotfiles.git",
     "dotfiles.targetPath": "~/dotfiles",
     "dotfiles.installCommand": "bash $(~/dotfiles/install-profile -f docker-linux)",
