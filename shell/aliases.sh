@@ -13,14 +13,14 @@ alias tree='tree -a'
 # Always enable colored `ls` output with human readable sizes and add ls shortcut
 if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ -d /usr/local/opt/coreutils ]]; then
-        alias ls='gls -h --color=auto'
-        alias l='gls -lah --color=auto'
+        alias ls='gls -Nh --color=auto'
+        alias l='gls -Nlah --color=auto'
     else
         alias ls='ls -Gh'
         alias l='ls -la'
     fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    alias ls='ls -h --color=auto'
+    alias ls='ls -Nh --color=auto'
     alias l='ls -la --color=auto'
 fi
 
