@@ -17,5 +17,5 @@ script:
   - sed -i '' '/virtualbox/d' ./meta/configs/brew.yaml
   - sed -i '' '/- shell:/d' ./meta/configs/zsh.yaml
   - sed -i '' '/chsh/d' ./meta/configs/zsh.yaml
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./install-profile macos
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then ./install-profile linux
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./install-profile macos; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then ./install-profile linux; fi
