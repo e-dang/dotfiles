@@ -1,3 +1,7 @@
+# Set default editor to vim
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
+
 export SAVEHIST=1000000
 
 # Color ls output better than default but worse than if using dircolors
