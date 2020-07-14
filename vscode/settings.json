@@ -22,6 +22,9 @@
     "editor.rulers": [
         120
     ],
+    "emmet.includeLanguages": {
+        "jinja-html": "html"
+    },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.trimTrailingWhitespace": true,
