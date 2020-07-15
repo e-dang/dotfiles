@@ -32,6 +32,10 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.dataScience.askForKernelRestart": false,
+    "remote.containers.defaultExtensions": [
+        "mhutchie.git-graph",
+        "remote.containers.defaultExtensions"
+    ],
     "telemetry.enableTelemetry": false,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/bin/zsh",
