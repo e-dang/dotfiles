@@ -14,7 +14,7 @@
     file-icons.file-icons:
       status: install
       insiders: false
-    eamodio.gitlens:
+    mhutchie.git-graph:
       status: install
       insiders: false
     njpwerner.autodocstring:
