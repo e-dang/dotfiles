@@ -1,5 +1,6 @@
 - tap:
     - homebrew/cask-drivers
+    - heroku/brew
 
 - brew:
     - git
@@ -13,6 +14,7 @@
     - open-mpi
     - boost
     - coreutils
+    - heroku
 
 - cask:
     - visual-studio-code
