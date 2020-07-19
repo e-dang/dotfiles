@@ -7,4 +7,4 @@
     ~/.zshrc:
 
 - shell:
-    - [chsh -s $(which zsh), Making zsh the default shell...]
+    - [set +e && chsh -s $(which zsh); set -e, Making zsh the default shell...]
