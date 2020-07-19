@@ -34,8 +34,10 @@
     "python.dataScience.askForKernelRestart": false,
     "remote.containers.defaultExtensions": [
         "mhutchie.git-graph",
-        "mkxml.vscode-filesize"
+        "mkxml.vscode-filesize",
+        "redhat.vscode-yaml"
     ],
+    "search.useGlobalIgnoreFiles": true,
     "telemetry.enableTelemetry": false,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/bin/zsh",
