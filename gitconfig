@@ -1,3 +1,12 @@
 [core]
 	excludesfile = ~/.gitignore
     ignorecase = true
+
+[merge]
+    ff = false
+
+[user]
+    # define these in gitconfig_local
+
+[include]
+    path = ~/.gitconfig_local

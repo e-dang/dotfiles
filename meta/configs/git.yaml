@@ -1,6 +1,8 @@
 - link:
     ~/.gitconfig:
     ~/.gitignore:
+    ~/.gitconfig_local:
+      ignore-missing: true
 
 - shell:
     - git submodule sync --recursive
