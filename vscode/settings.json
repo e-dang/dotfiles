@@ -31,6 +31,7 @@
     "git.detectSubmodulesLimit": 9999,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
     "python.dataScience.askForKernelRestart": false,
     "remote.containers.defaultExtensions": [
         "mhutchie.git-graph",
