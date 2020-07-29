@@ -6,3 +6,4 @@ channels:
 create_default_packages:
   - autopep8
   - pylint
+  - mypy
