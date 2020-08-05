@@ -33,6 +33,7 @@
     "python.linting.pylintEnabled": true,
     "python.linting.mypyEnabled": true,
     "python.dataScience.askForKernelRestart": false,
+    "python.testing.pytestEnabled": false,
     "remote.containers.defaultExtensions": [
         "mhutchie.git-graph",
         "mkxml.vscode-filesize",
