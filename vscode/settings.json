@@ -23,6 +23,7 @@
         120
     ],
     "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
         "jinja-html": "html"
     },
     "explorer.confirmDelete": false,
