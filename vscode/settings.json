@@ -30,9 +30,10 @@
     "explorer.confirmDragAndDrop": false,
     "files.trimTrailingWhitespace": true,
     "git.detectSubmodulesLimit": 9999,
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     "python.dataScience.askForKernelRestart": false,
     "python.testing.pytestEnabled": false,
     "remote.containers.defaultExtensions": [
