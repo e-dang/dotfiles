@@ -61,3 +61,8 @@ vcheat() {
 remove_pycache() {
     find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
 }
+
+# Removes all migrations files in django project
+remove_migrations() {
+    find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+}
