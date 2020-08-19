@@ -57,3 +57,7 @@ dfpush() {
 vcheat() {
     cat ~/.vim/vim_cheat_sheet.txt
 }
+
+remove_pycache() {
+    find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
+}
