@@ -36,8 +36,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # If homebrew installs GCC, use it when executing gcc/g++ commands. Note that library and include paths will need to be specified manually. TAGS:
 if [[ -d /usr/local/opt/gcc/bin ]]; then
-    alias gcc="gcc-9"
-    alias cc="gcc-9"
-    alias g++="g++-9"
-    alias c++="c++-9"
+    alias gcc="gcc-10"
+    alias cc="gcc-10"
+    alias g++="g++-10"
+    alias c++="c++-10"
 fi
