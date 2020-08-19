@@ -22,4 +22,4 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sed -i '/- shell:/d' ./meta/configs/zsh.yaml; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sed -i '/chsh/d' ./meta/configs/zsh.yaml; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./install-profile macos; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then ./install-profile docker-linux; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./install-profile docker-linux; fi
