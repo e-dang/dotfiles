@@ -38,3 +38,6 @@
 [submodule "vim/pack/plugins/start/lightline-ale"]
 	path = vim/pack/plugins/start/lightline-ale
 	url = https://github.com/maximbaz/lightline-ale.git
+[submodule "dotbot_plugin_aptget"]
+	path = dotbot_plugin_aptget
+	url = https://github.com/dein0s/dotbot_plugin_aptget.git
