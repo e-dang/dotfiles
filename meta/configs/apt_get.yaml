@@ -1,1 +1,2 @@
-- aptget: vim
+- shell:
+    - [sudo apt-get -y install --no-install-recommends vim, Installing vim...]
