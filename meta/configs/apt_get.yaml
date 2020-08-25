@@ -1,2 +1,4 @@
 - shell:
+    - [export DEBIAN_FRONTEND=noninteractive]
+    - [sudo apt-get update, Updating apt-get...]
     - [sudo apt-get -y install --no-install-recommends vim, Installing vim...]
