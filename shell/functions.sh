@@ -66,3 +66,20 @@ remove_pycache() {
 remove_migrations() {
     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 }
+
+use_xcode() {
+    export CPPFLAGS=""
+    export LDFLAGS=""
+    path_remove /usr/local/opt/llvm/bin
+}
+
+use_llvm() {
+    export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+    path_prepend /usr/local/opt/llvm/bin
+}
+
+use_gcc() {
+    export LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/9 -Wl,-rpath,/usr/local/opt/gcc/lib/gcc/9"
+    export CPPFLAGS="-I/usr/local/opt/gcc/include -I/usr/local/opt/gcc/include/c++/9.2.0/"
+}
