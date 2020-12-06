@@ -41,6 +41,12 @@
     ms-vscode-remote.remote-containers:
       status: install
       insiders: false
+    dbaeumer.vscode-eslint:
+      status: install
+      insiders: false
+    esbenp.prettier-vscode:
+      status: install
+      insiders: false
 
 - link:
     ~/Library/Application Support/Code/User/keybindings.json:
