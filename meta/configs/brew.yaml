@@ -15,6 +15,11 @@
     - boost
     - coreutils
     - heroku
+    - node
+    - yarn
+    - terraform
+    - act # local github actions runner
+    - wget
 
 - cask:
     - visual-studio-code
