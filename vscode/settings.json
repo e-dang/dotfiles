@@ -31,10 +31,13 @@
     "files.trimTrailingWhitespace": true,
     "git.detectSubmodulesLimit": 9999,
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "jupyter.askForKernelRestart": false,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.mypyEnabled": false,
-    "python.dataScience.askForKernelRestart": false,
     "python.testing.pytestEnabled": false,
     "remote.containers.defaultExtensions": [
         "mhutchie.git-graph",
@@ -53,8 +56,12 @@
     "workbench.settings.useSplitJSON": true,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.value": 20,
     "workbench.colorTheme": "Custom Atom One Dark",
     "workbench.iconTheme": "file-icons",
     "yaml.format.printWidth": 120,
-    "yaml.format.proseWrap": "never"
+    "yaml.format.proseWrap": "never",
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    }
 }
