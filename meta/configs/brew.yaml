@@ -8,11 +8,10 @@
     - llvm
     - gcc
     - cmake
+    - clang-format
     - tree
     - parallel
     - ssh-copy-id
-    - open-mpi
-    - boost
     - coreutils
     - heroku
     - node
@@ -32,4 +31,6 @@
     - logitech-options
     - vagrant
     - docker
+    - arduino
+    - spotify
     # - virtualbox  # intalling this causes script to fail for MacOS >=10.13 because it is a kernel extension
