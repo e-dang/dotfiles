@@ -2,7 +2,13 @@
     ms-python.python:
       status: install
       insiders: false
+    ms-python.vscode-pylance:
+      status: install
+      insiders: false
     ms-vscode.cpptools:
+      status: install
+      insiders: false
+    xaver.clang-format:
       status: install
       insiders: false
     twxs.cmake:
@@ -15,15 +21,6 @@
       status: install
       insiders: false
     mhutchie.git-graph:
-      status: install
-      insiders: false
-    njpwerner.autodocstring:
-      status: install
-      insiders: false
-    cschlosser.doxdocgen:
-      status: install
-      insiders: false
-    redhat.vscode-yaml:
       status: install
       insiders: false
     yzhang.markdown-all-in-one:
