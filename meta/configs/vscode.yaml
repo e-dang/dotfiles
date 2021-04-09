@@ -1,11 +1,8 @@
 - vscode:
-    ms-python.python:
+    njpwerner.autodocstring:
       status: install
       insiders: false
-    ms-python.vscode-pylance:
-      status: install
-      insiders: false
-    ms-vscode.cpptools:
+    coenraads.bracket-pair-colorizer-2:
       status: install
       insiders: false
     xaver.clang-format:
@@ -17,7 +14,13 @@
     ms-vscode.cmake-tools:
       status: install
       insiders: false
+    ms-vscode.cpptools:
+      status: install
+      insiders: false
     file-icons.file-icons:
+      status: install
+      insiders: false
+    eamodio.gitlens:
       status: install
       insiders: false
     mhutchie.git-graph:
@@ -26,22 +29,28 @@
     yzhang.markdown-all-in-one:
       status: install
       insiders: false
-    coenraads.bracket-pair-colorizer-2:
+    esbenp.prettier-vscode:
       status: install
       insiders: false
-    mkxml.vscode-filesize:
-      status: install
-      insiders: false
-    ms-azuretools.vscode-docker:
+    ms-python.python:
       status: install
       insiders: false
     ms-vscode-remote.remote-containers:
       status: install
       insiders: false
+    ms-azuretools.vscode-docker:
+      status: install
+      insiders: false
+    batisteo.vscode-django:
+      status: install
+      insiders: false
     dbaeumer.vscode-eslint:
       status: install
       insiders: false
-    esbenp.prettier-vscode:
+    mkxml.vscode-filesize:
+      status: install
+      insiders: false
+    ms-python.vscode-pylance:
       status: install
       insiders: false
 
