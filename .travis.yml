@@ -4,9 +4,9 @@ jobs:
     - os: linux
       dist: xenial
     - os: osx
-      osx_image: xcode11
-    - os: osx
       osx_image: xcode11.6
+    - os: osx
+      osx_image: xcode12.2
 
 sudo: true
 paranoid_mode: false
