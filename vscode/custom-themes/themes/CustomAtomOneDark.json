@@ -2158,7 +2158,7 @@
             "scope": "meta.attribute.python,meta.indexed-name.python",
             "settings": {
                 "foreground": "#61AFEF" //#826AED #454E9E
-            }
+            },
         },
         {
             "scope": "constant.other.caps.python",
@@ -2172,5 +2172,14 @@
                 "foreground": "#7765E3"
             }
         }
-    ]
+    ],
+    "semanticHighlighting": false,
+    "semanticTokenColors": {
+        "property": "#61AFEF",
+        "selfParameter.declaration": "#E06C75",
+        "parameter.declaration": "#D19A66",
+        "variable.declaration": "#ABB2BF",
+        "method": "#7765E3",
+        "method.declaration": "#61AFEF"
+    }
 }
