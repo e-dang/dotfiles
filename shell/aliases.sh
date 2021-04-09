@@ -33,11 +33,3 @@ alias grep='grep --color=auto'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
-
-# If homebrew installs GCC, use it when executing gcc/g++ commands. Note that library and include paths will need to be specified manually. TAGS:
-if [[ -d /usr/local/opt/gcc/bin ]]; then
-    alias gcc="gcc-10"
-    alias cc="gcc-10"
-    alias g++="g++-10"
-    alias c++="c++-10"
-fi

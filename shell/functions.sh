@@ -67,19 +67,40 @@ remove_migrations() {
     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 }
 
+
+LLVM_PATH=$(brew --prefix)/opt/llvm/bin
+GCC_PATH=$(brew --prefix)/opt/gcc/bin
+
 use_xcode() {
-    export CPPFLAGS=""
     export LDFLAGS=""
-    path_remove /usr/local/opt/llvm/bin
+    path_remove $LLVM_PATH
+    path_remove $GCC_PATH
+    unalias_gcc
 }
 
 use_llvm() {
-    export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
-    path_prepend /usr/local/opt/llvm/bin
+    export LDFLAGS="-L$(brew --prefix)/opt/llvm/lib -Wl,-rpath,$(brew --prefix)/opt/llvm/lib"
+    path_remove $GCC_PATH
+    path_prepend $LLVM_PATH
+    unalias_gcc
 }
 
 use_gcc() {
-    export LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/9 -Wl,-rpath,/usr/local/opt/gcc/lib/gcc/9"
-    export CPPFLAGS="-I/usr/local/opt/gcc/include -I/usr/local/opt/gcc/include/c++/9.2.0/"
+    export LDFLAGS=""
+    path_remove $LLVM_PATH
+    path_prepend $GCC_PATH
+    gcc=$(ls $GCC_PATH | grep "^gcc-\d\d$")
+    gpp=$(ls $GCC_PATH | grep "^g++-\d\d$")
+    alias gcc=$gcc
+    alias cc=$gcc
+    alias g++=$gpp
+    alias c++=$gpp
+}
+
+unalias_gcc() {
+    for name in gcc cc g++ c++; do
+        if [[ $(alias | grep $name) ]]; then
+            unalias $name
+        fi
+    done
 }
