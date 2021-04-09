@@ -17,6 +17,7 @@
     "dotfiles.installCommand": "bash $(~/dotfiles/install-profile -f docker-linux)",
     "editor.acceptSuggestionOnEnter": "off",
     "editor.detectIndentation": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.fontFamily": "MesloLGS NF",
     "editor.highlightActiveIndentGuide": true,
@@ -41,15 +42,11 @@
         "**/*.html": "html",
         "**/templates/**/*.html": "django-html",
         "**/templates/**/*": "django-txt",
-        "**/requirements{/**,*}.{txt,in}": "pip-requirements",
-        "*.ejs": "jinja-html"
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
     },
     "git.detectSubmodulesLimit": 9999,
     "html.format.templating": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "jupyter.askForKernelRestart": false,
     "python.formatting.provider": "yapf",
     "python.languageServer": "Pylance",
@@ -57,7 +54,7 @@
     "python.linting.pylintEnabled": true,
     "python.linting.mypyEnabled": false,
     "python.testing.pytestEnabled": true,
-    "remote.containers.defaultExtensions": ["mhutchie.git-graph", "mkxml.vscode-filesize", "redhat.vscode-yaml"],
+    "remote.containers.defaultExtensions": ["mhutchie.git-graph", "mkxml.vscode-filesize"],
     "search.useGlobalIgnoreFiles": true,
     "telemetry.enableTelemetry": false,
     "terminal.external.osxExec": "iTerm.app",
@@ -74,19 +71,11 @@
     "workbench.editor.wrapTabs": true,
     "workbench.colorTheme": "Custom Atom One Dark",
     "workbench.iconTheme": "file-icons",
-    "yaml.format.printWidth": 120,
-    "yaml.format.proseWrap": "never",
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
     "workbench.editor.revealIfOpen": true,
     "workbench.editorAssociations": [
         {
             "viewType": "jupyter.notebook.ipynb",
             "filenamePattern": "*.ipynb"
         }
-    ],
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    ]
 }
