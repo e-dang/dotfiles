@@ -48,7 +48,7 @@
     "html.format.templating": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "jupyter.askForKernelRestart": false,
-    "python.formatting.provider": "yapf",
+    "python.formatting.provider": "black",
     "python.languageServer": "Pylance",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
