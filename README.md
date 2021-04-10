@@ -15,7 +15,9 @@ To install a single configuration run the following command:
 ```
 
 ## Editing
-Sourcing order for shell *.rc files (i.e. zshrc) is as follows:
+
+Sourcing order for shell \*.rc files (i.e. zshrc) is as follows:
+
 1. functions
 2. plugins/plugins_before
 3. path
@@ -24,7 +26,16 @@ Sourcing order for shell *.rc files (i.e. zshrc) is as follows:
 6. settings
 7. plugins_after
 
+## Updating
+
+To update the Git submodules run
+
+```
+git submodule update --remote --merge
+```
+
 ## Snippets and Inspiration
-- https://github.com/mathiasbynens/dotfiles
-- https://github.com/CoreyMSchafer/dotfiles
-- https://github.com/anishathalye/dotfiles
+
+-   https://github.com/mathiasbynens/dotfiles
+-   https://github.com/CoreyMSchafer/dotfiles
+-   https://github.com/anishathalye/dotfiles
