@@ -2,6 +2,7 @@
     ~/.config/pylintrc:
     ~/.config/pycodestyle:
     ~/.config/yapf:
+    ~/.config/black:
     ~/.condarc:
     ~/.clang-format:
     ~/.prettierrc:
