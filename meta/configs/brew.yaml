@@ -33,4 +33,5 @@
     - docker
     - arduino
     - spotify
+    - vnc-viewer
     # - virtualbox  # intalling this causes script to fail for MacOS >=10.13 because it is a kernel extension
