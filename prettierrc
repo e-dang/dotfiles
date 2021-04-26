@@ -20,7 +20,7 @@
         {
             "files": ["*.yaml", "*.yml"],
             "options": {
-                "prose-wrap": "always",
+                "proseWrap": "always",
                 "tabWidth": 2
             }
         }
