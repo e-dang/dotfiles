@@ -1,12 +1,27 @@
 - shell:
-    - [export DEBIAN_FRONTEND=noninteractive]
-    - [apt-get update && apt-get upgrade, Updating and upgrading apt-get...]
-    - [
+    - export DEBIAN_FRONTEND=noninteractive
+    - command: apt-get update && apt-get upgrade
+      description: Updating and upgrading apt-get...
+      stderr: true
+    - command:
         apt-get -y install --no-install-recommends sudo vim zsh curl wget apt-transport-https ca-certificates curl gnupg
-        lsb-release,
-        Installing packages...,
-      ]
-    - [curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg, "Adding docker GPG key..."]
-    - [echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null, "Settinging up docker repository..."]
-    - [apt-get update && apt-get upgrade, Updating and upgrading apt-get...]
-    - [apt-get install docker-ce-cli, Installing docker cli...]
+        lsb-release
+      description: Installing packages...
+      stderr: true
+    - command:
+        curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o
+        /usr/share/keyrings/docker-archive-keyring.gpg
+      description: Adding docker GPG key...
+      stderr: true
+    - command:
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]
+        https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list >
+        /dev/null
+      description: Settinging up docker repository...
+      stderr: true
+    - command: apt-get update && apt-get upgrade
+      description: Updating and upgrading apt-get...
+      stderr: true
+    - command: apt-get install docker-ce-cli
+      description: Installing docker cli...
+      stderr: true
