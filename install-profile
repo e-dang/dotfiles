@@ -37,7 +37,7 @@ for config in ${CONFIGS} ${@}; do
     suffix="-sudo"
     echo -e "$(<"${BASE_DIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}")\n$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config%"$suffix"}${CONFIG_SUFFIX}")" > "$configFile"
 
-    cmd=("${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile")
+    cmd=("${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile" --plugin-dir dotbot-brew --plugin-dir dotbot-vscode)
 
     if [[ $config == *"sudo"* ]]; then
         cmd=(sudo "${cmd[@]}")
