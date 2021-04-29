@@ -2,7 +2,12 @@
 
 set -e
 
-BASE_CONFIG="base"
+if [[ $1 == "docker_linux" ]]; then
+    BASE_CONFIG="base_force"
+else
+    BASE_CONFIG="base"
+fi
+
 CONFIG_SUFFIX=".yaml"
 
 META_DIR="meta"
