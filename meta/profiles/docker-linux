@@ -1,7 +1,7 @@
 initial
-apt_get
+apt
 bash
 zsh
 vim
 fonts
-lang_configs
+lang-configs
