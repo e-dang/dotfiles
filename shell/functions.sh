@@ -67,40 +67,41 @@ remove_migrations() {
     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 }
 
+if [[ $(echo ${OSTYPE} | grep "darwin") ]]; then
+    LLVM_PATH=$(brew --prefix)/opt/llvm/bin
+    GCC_PATH=$(brew --prefix)/opt/gcc/bin
 
-LLVM_PATH=$(brew --prefix)/opt/llvm/bin
-GCC_PATH=$(brew --prefix)/opt/gcc/bin
+    use_xcode() {
+        export LDFLAGS=""
+        path_remove $LLVM_PATH
+        path_remove $GCC_PATH
+        unalias_gcc
+    }
 
-use_xcode() {
-    export LDFLAGS=""
-    path_remove $LLVM_PATH
-    path_remove $GCC_PATH
-    unalias_gcc
-}
+    use_llvm() {
+        export LDFLAGS="-L$(brew --prefix)/opt/llvm/lib -Wl,-rpath,$(brew --prefix)/opt/llvm/lib"
+        path_remove $GCC_PATH
+        path_prepend $LLVM_PATH
+        unalias_gcc
+    }
 
-use_llvm() {
-    export LDFLAGS="-L$(brew --prefix)/opt/llvm/lib -Wl,-rpath,$(brew --prefix)/opt/llvm/lib"
-    path_remove $GCC_PATH
-    path_prepend $LLVM_PATH
-    unalias_gcc
-}
+    use_gcc() {
+        export LDFLAGS=""
+        path_remove $LLVM_PATH
+        path_prepend $GCC_PATH
+        gcc=$(ls $GCC_PATH | grep "^gcc-\d\d$")
+        gpp=$(ls $GCC_PATH | grep "^g++-\d\d$")
+        alias gcc=$gcc
+        alias cc=$gcc
+        alias g++=$gpp
+        alias c++=$gpp
+    }
 
-use_gcc() {
-    export LDFLAGS=""
-    path_remove $LLVM_PATH
-    path_prepend $GCC_PATH
-    gcc=$(ls $GCC_PATH | grep "^gcc-\d\d$")
-    gpp=$(ls $GCC_PATH | grep "^g++-\d\d$")
-    alias gcc=$gcc
-    alias cc=$gcc
-    alias g++=$gpp
-    alias c++=$gpp
-}
-
-unalias_gcc() {
-    for name in gcc cc g++ c++; do
-        if [[ $(alias | grep $name) ]]; then
-            unalias $name
-        fi
-    done
-}
+    unalias_gcc() {
+        for name in gcc cc g++ c++; do
+            if [[ $(alias | grep $name) ]]; then
+                unalias $name
+            fi
+        done
+    }
+fi
