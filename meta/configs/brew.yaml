@@ -19,6 +19,8 @@
     - terraform
     - act # local github actions runner
     - wget
+    - mkcert
+    - nss
 
 - cask:
     - visual-studio-code
