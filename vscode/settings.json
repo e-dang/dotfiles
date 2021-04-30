@@ -14,7 +14,7 @@
     },
     "dotfiles.repository": "https://github.com/e-dang/dotfiles.git",
     "dotfiles.targetPath": "~/dotfiles",
-    "dotfiles.installCommand": "bash $(~/dotfiles/install-profile docker-dev)",
+    "dotfiles.installCommand": "bash $(~/dotfiles/install-profile docker)",
     "editor.acceptSuggestionOnEnter": "off",
     "editor.detectIndentation": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
