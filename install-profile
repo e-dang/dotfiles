@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ $1 == "docker-linux" ]]; then
+if [[ $1 == "docker-dev" ]]; then
     BASE_CONFIG="base-force"
 else
     BASE_CONFIG="base"
