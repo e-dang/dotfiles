@@ -3,8 +3,8 @@
       description: Updating and upgrading apt-get...
       stderr: true
     - command:
-        $(which sudo) apt-get install -y --no-install-recommends sudo vim zsh curl wget apt-transport-https
-        ca-certificates curl gnupg lsb-release
+        $(which sudo) apt-get install -y --no-install-recommends sudo build-essential vim zsh curl wget
+        apt-transport-https ca-certificates curl gnupg lsb-release
       description: Installing packages...
       stderr: true
     - command:
