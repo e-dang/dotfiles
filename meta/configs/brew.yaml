@@ -41,5 +41,5 @@
     - arduino
     - spotify
     - vnc-viewer
-    - terraspace
+    # - terraspace
     # - virtualbox  # intalling this causes script to fail for MacOS >=10.13 because it is a kernel extension
