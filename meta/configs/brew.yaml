@@ -15,12 +15,17 @@
     - coreutils
     - heroku
     - node
+    - typescript
+    - nvm
     - yarn
     - terraform
     - act # local github actions runner
     - wget
     - mkcert
     - nss
+    - helm
+    - cookiecutter
+    - aws
 
 - cask:
     - visual-studio-code
@@ -36,4 +41,5 @@
     - arduino
     - spotify
     - vnc-viewer
+    - terraspace
     # - virtualbox  # intalling this causes script to fail for MacOS >=10.13 because it is a kernel extension
