@@ -26,7 +26,11 @@
     - helm
     - cookiecutter
     - aws
-    - sops
+    - sops # secret encryption/decryption tool
+    - gnupg # pgp keys
+    - jq # json cli parser
+    - yq # yaml cli parser
+    - telepresence # k8 local dev tool
 
 - cask:
     - visual-studio-code
