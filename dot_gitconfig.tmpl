@@ -1,0 +1,14 @@
+[user]
+    name = {{ .name | quote }}
+    email = {{ .email | quote }}
+[core]
+    excludesfile = ~/.gitignore
+    ignorecase = true
+[merge]
+    ff = false
+[pull]
+    ff = only
+{{- if contains "osx" .profile }}
+[credential]
+    helper = osxkeychain
+{{ end }}

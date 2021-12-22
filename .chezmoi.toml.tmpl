@@ -1,0 +1,7 @@
+{{ $name := promptString "name" -}}
+{{ $email := promptString "email" -}}
+{{ $profile := promptString "profile (root-osx, osx, root-linux)" -}}
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+    profile = {{ $profile | quote }}

@@ -1,0 +1,61 @@
+{{- if contains "root" .profile -}}
+#!/bin/bash
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+
+brew "zsh"
+brew "git"
+brew "python"
+brew "tree"
+brew "parallel"
+brew "ssh-copy-id"
+brew "node"
+brew "typescript"
+brew "nvm"
+brew "yarn"
+brew "terraform"
+brew "helm"
+brew "aws"
+brew "sops"
+brew "jq" # json cli parser
+brew "yq" # yaml cli parser
+brew "tldr"
+brew "ripgrep"
+brew "chezmoi"
+{{ if eq .profile "root-osx" -}}
+brew "llvm"
+brew "gcc"
+brew "cmake"
+brew "clang-format"
+brew "coreutils"
+brew "heroku"
+brew "act" # local github actions runner
+brew "wget"
+brew "mkcert" # tool for creating certificates for localhost
+brew "nss" # required for mkcert if using Firefox
+brew "cookiecutter"
+brew "azure-cli"
+brew "gnupg"
+brew "telepresence" # k8 local dev tool
+
+cask "visual-studio-code"
+cask "miniconda"
+cask "iterm2"
+cask "google-chrome"
+cask "firefox"
+cask "rectangle"
+cask "logitech-options"
+cask "docker"
+cask "arduino"
+cask "spotify"
+cask "figma"
+cask "macfuse" # needed to use telepresence
+cask "pgadmin4"
+cask "postman"
+cask "react-native-debugger"
+{{ end -}}
+
+EOF
+{{ end }}

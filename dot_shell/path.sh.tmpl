@@ -1,0 +1,9 @@
+{{ if eq .profile "root-osx" -}}
+# update PATH so homebrew python is the default python
+path_prepend $(brew --prefix)/python/libexec/bin
+{{ else if eq .profile "root-linux" }}
+path_prepend /home/linuxbrew/.linuxbrew/bin
+{{ else if eq .profile "osx" }}
+path_prepend /opt/homebrew/bin
+path_prepend $HOME/Projects/bin # chezmoi - only temporary
+{{ end }}

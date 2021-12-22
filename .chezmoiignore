@@ -1,0 +1,7 @@
+iTerm2/
+{{ if ne .chezmoi.os "darwin" }}
+Library/
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+.fonts/
+{{ end }}

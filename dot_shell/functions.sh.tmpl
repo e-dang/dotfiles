@@ -1,0 +1,128 @@
+# Create a new directory and enter it
+function mk() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Get colors in manual pages
+function man()
+{
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_remove() {
+    PATH=$(echo -n "$PATH" | awk -v RS=: -v ORS=: "\$0 != \"$1\"" | sed 's/:$//')
+}
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_append() {
+    path_remove "$1"
+    PATH="${PATH:+"$PATH:"}$1"
+}
+
+# Taken from https://github.com/anishathalye/dotfiles/blob/master/shell/functions.sh
+path_prepend() {
+    path_remove "$1"
+    PATH="$1${PATH:+":$PATH"}"
+}
+
+# Open dotfiles repository
+dfopen() {
+    code $(chezmoi source-path)
+}
+
+# Output vim cheat sheet
+vcheat() {
+    cat << EOF
+go to end of line: $
+delete line: dd
+search: /\v
+select word: ctrl + n
+select multiple words: (ctrl + n) repeated
+multiple cursors: ((ctrl + n) repeated) esc
+EOF
+}
+
+# Output macos cheat sheet
+mcheat() {
+    cat << EOF
+System wide
+    Spotlight search: ⌘ Space
+    Character Viewer: ⌃⌘ Space (Quickly find emojis and special characters)
+    Force quit an app: ⌥⌘ Esc
+    Lock screen: ⌃⌘ Q
+    Show or hide the Dock: ⌃ F3 or ⌥⌘ D
+    Show all windows: ⌃ Arrow-Up
+    Show all windows of the front app: ⌃ Arrow-Down
+    Forward delete: fn delete
+    Paste without formatting: ⇧⌘ V
+    
+Screenshot
+    Open Screenshot app: ⇧⌘ 5
+    Save screenshot of the screen: ⇧⌘ 3
+    Save screenshot of a portion of screen: ⇧⌘ 4
+    Save screenshot of a window: ⇧⌘ 4 + Space
+    Copy screenshot of the screen: ⇧⌃⌘ 3
+    Copy screenshot of a portion of screen: ⇧⌃⌘ 4
+    Copy screenshot of a window: ⇧⌃⌘ 4 + Space
+
+Finder
+    Open the home folder: ⇧⌘ H
+    Open the desktop folder. ⇧⌘ D
+    Open the parent folder: ⌘ Arrow-Up
+    Go to the previous folder: ⌘ [
+    Go to the next folder: ⌘ ]
+    Show or hide hidden files: ⇧⌘ .
+EOF
+}
+
+remove_pycache() {
+    find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
+}
+
+{{ if eq .profile "root-osx" -}}
+LLVM_PATH=$(brew --prefix)/opt/llvm/bin
+GCC_PATH=$(brew --prefix)/opt/gcc/bin
+
+use_xcode() {
+    export LDFLAGS=""
+    path_remove $LLVM_PATH
+    path_remove $GCC_PATH
+    unalias_gcc
+}
+
+use_llvm() {
+    export LDFLAGS="-L$(brew --prefix)/opt/llvm/lib -Wl,-rpath,$(brew --prefix)/opt/llvm/lib"
+    path_remove $GCC_PATH
+    path_prepend $LLVM_PATH
+    unalias_gcc
+}
+
+use_gcc() {
+    export LDFLAGS=""
+    path_remove $LLVM_PATH
+    path_prepend $GCC_PATH
+    gcc=$(ls $GCC_PATH | grep "^gcc-\d\d$")
+    gpp=$(ls $GCC_PATH | grep "^g++-\d\d$")
+    alias gcc=$gcc
+    alias cc=$gcc
+    alias g++=$gpp
+    alias c++=$gpp
+}
+
+unalias_gcc() {
+    for name in gcc cc g++ c++; do
+        if [[ $(alias | grep $name) ]]; then
+            unalias $name
+        fi
+    done
+}
+{{ end }}

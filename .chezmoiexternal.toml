@@ -1,0 +1,68 @@
+[".zsh/oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".zsh/oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".zsh/oh-my-zsh/custom/plugins/zsh-history-substring-search"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/ale"]
+    type = "archive"
+    url = "https://github.com/dense-analysis/ale/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/lightline-ale"]
+    type = "archive"
+    url = "https://github.com/maximbaz/lightline-ale/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/lightline.vim"]
+    type = "archive"
+    url = "https://github.com/itchyny/lightline.vim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/nerdcommenter"]
+    type = "archive"
+    url = "https://github.com/preservim/nerdcommenter/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/vim-gitgutter"]
+    type = "archive"
+    url = "https://github.com/airblade/vim-gitgutter/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".vim/pack/plugins/start/vim-multiple-cursors"]
+    type = "archive"
+    url = "https://github.com/terryma/vim-multiple-cursors/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+
