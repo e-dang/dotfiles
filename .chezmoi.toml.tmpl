@@ -1,6 +1,24 @@
-{{ $name := promptString "name" -}}
-{{ $email := promptString "email" -}}
-{{ $profile := promptString "profile (root-osx, osx, root-linux)" -}}
+{{- $name := "" -}}
+{{- if (hasKey . "name") -}}
+{{-   $name = .name -}}
+{{- else -}}
+{{-   $name = promptString "name" -}}
+{{- end -}}
+
+{{- $email := "" -}}
+{{- if (hasKey . "email") -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" -}}
+{{- end -}}
+
+{{- $profile := "" -}}
+{{- if (hasKey . "profile") -}}
+{{-   $profile = .profile -}}
+{{- else -}}
+{{-   $profile = promptString "profile (root-osx, osx, root-linux)" -}}
+{{- end -}}
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
