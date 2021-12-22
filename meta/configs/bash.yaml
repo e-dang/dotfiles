@@ -1,8 +1,0 @@
-- create:
-    - ~/.cache/bash
-
-- link:
-    ~/.shell:
-    ~/.bash:
-    ~/.bash_profile:
-    ~/.bashrc:

@@ -1,3 +1,0 @@
-go to end of line: $
-delete line: dd
-search: /\v
