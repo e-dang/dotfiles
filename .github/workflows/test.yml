@@ -7,18 +7,42 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-macos:
     strategy:
       matrix:
-        os: [macos-11, macos-10.15, ubuntu-18.04, ubuntu-20.04]
+        os: [macos-11, macos-10.15]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Install configurations (macos)
-        if: ${{ contains(matrix.os, 'macos') }}
+      - name: Write template configs
+        run: |
+          cat << EOT >> ~/.config/chezmoi/chezmoi.toml
+          [data]
+              name = "Test User"
+              email = "testuser@demo.com"
+              profile = "root-osx"
+
+      - name: Install configurations
         run: sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 
-      - name: Install configurations (ubuntu)
-        if: ${{ contains(matrix.os, 'ubuntu') }}
+      - name: Test installation
+        run: |
+          brew list
+
+  test-ubuntu:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Write template configs
+        run: |
+          cat << EOT >> ~/.config/chezmoi/chezmoi.toml
+          [data]
+              name = "Test User"
+              email = "testuser@demo.com"
+              profile = "root-linux"
+
+      - name: Install configurations
         run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 
       - name: Test installation
