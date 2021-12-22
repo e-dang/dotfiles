@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - chezmoi
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-11, macos-10.15, ubuntu-18.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install configurations (macos)
+        if: ${{ contains(matrix.os, 'macos') }}
+        run: sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+
+      - name: Install configurations (ubuntu)
+        if: ${{ contains(matrix.os, 'ubuntu') }}
+        run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+
+      - name: Test installation
+        run: |
+          brew list
