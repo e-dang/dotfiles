@@ -20,6 +20,7 @@ jobs:
               name = "Test User"
               email = "testuser@demo.com"
               profile = "root-osx"
+          EOT
 
       - name: Install configurations
         run: sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
@@ -41,6 +42,7 @@ jobs:
               name = "Test User"
               email = "testuser@demo.com"
               profile = "root-linux"
+          EOT
 
       - name: Install configurations
         run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
