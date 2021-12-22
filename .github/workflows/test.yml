@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Write template configs
         run: |
+          mkdir -p ~/.config/chezmoi && \
           cat << EOT >> ~/.config/chezmoi/chezmoi.toml
           [data]
               name = "Test User"
@@ -37,6 +38,7 @@ jobs:
     steps:
       - name: Write template configs
         run: |
+          mkdir -p ~/.config/chezmoi && \
           cat << EOT >> ~/.config/chezmoi/chezmoi.toml
           [data]
               name = "Test User"
