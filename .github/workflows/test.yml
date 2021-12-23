@@ -23,6 +23,11 @@ jobs:
               profile = "root-osx"
           EOT
 
+      - name: Remove preexisting binaries
+        run: |
+          rm /usr/local/bin/aws && \
+          rm /usr/local/bin/conda
+
       - name: Install configurations
         run: sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 
