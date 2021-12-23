@@ -1,4 +1,6 @@
 iTerm2/
+README.md
+LICENSE
 {{ if ne .chezmoi.os "darwin" }}
 Library/
 {{ end }}
