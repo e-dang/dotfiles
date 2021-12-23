@@ -5,6 +5,8 @@
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 
+tap "heroku/brew"
+
 brew "zsh"
 brew "git"
 brew "python"
@@ -38,7 +40,7 @@ brew "nss" # required for mkcert if using Firefox
 brew "cookiecutter"
 brew "azure-cli"
 brew "gnupg"
-brew "telepresence" # k8 local dev tool
+brew "datawire/blackbird/telepresence" # k8 local dev tool
 
 cask "visual-studio-code"
 cask "miniconda"
