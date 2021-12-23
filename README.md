@@ -10,6 +10,8 @@ Personal dotfiles repository for automating the setup of my work stations. Uses 
 sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 ```
 
+If using iTerm2, you must manually import settings in the iTerm2 directory (see the README located there).
+
 ### Linux
 
 ```
