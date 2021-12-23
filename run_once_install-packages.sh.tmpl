@@ -1,7 +1,10 @@
 {{- if contains "root" .profile -}}
 #!/bin/bash
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+which -s brew
+if [[ $? != 0 ]] ; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 
