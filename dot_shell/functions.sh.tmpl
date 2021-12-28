@@ -64,7 +64,7 @@ System wide
     Show all windows of the front app: ⌃ Arrow-Down
     Forward delete: fn delete
     Paste without formatting: ⇧⌘ V
-    
+
 Screenshot
     Open Screenshot app: ⇧⌘ 5
     Save screenshot of the screen: ⇧⌘ 3
@@ -86,6 +86,11 @@ EOF
 
 remove_pycache() {
     find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
+}
+
+cpjs() { # cpjs -> copy javascript configs
+  cp ~/.prettierrc.js $(pwd)
+  cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
 }
 
 {{ if eq .profile "root-osx" -}}
