@@ -17,3 +17,8 @@ If using iTerm2, you must manually import settings in the iTerm2 directory (see 
 ```
 sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 ```
+
+## Notes
+
+- eslintrc.js is not a global config. It is included for the cpjs function defined in .shell/functions.sh.
+- .prettierrc.js is a global config, but also used for cpjs function.
