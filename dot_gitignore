@@ -6,3 +6,9 @@
 
 # Python
 .venv
+venv
+
+# JS/TS
+node_modules
+
+.env
