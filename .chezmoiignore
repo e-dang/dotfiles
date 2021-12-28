@@ -1,6 +1,8 @@
 iTerm2/
 README.md
 LICENSE
+eslintrc.js
+
 {{ if ne .chezmoi.os "darwin" }}
 Library/
 {{ end }}
