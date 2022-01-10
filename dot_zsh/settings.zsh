@@ -1,3 +1,4 @@
+export DISABLE_AUTO_UPDATE=true
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
 export HISTFILE="${ZSH_CACHE_DIR}/.zsh_history"
 autoload -Uz compinit && compinit -i -d "${ZSH_CACHE_DIR}/zcompdump-${ZSH_VERSION}"
