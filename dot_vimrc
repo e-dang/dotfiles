@@ -18,6 +18,7 @@ set ignorecase " case-insensitive search
 set smartcase " smart search
 set mouse+=a " enable mouse mode (scrolling, selection, etc)
 set noerrorbells visualbell t_vb= " disable bell noise
+set clipboard=unnamed
 
 " tab completion for files/bufferss
 set wildmode=longest,list
