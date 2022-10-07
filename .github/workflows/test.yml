@@ -36,25 +36,25 @@ jobs:
         run: |
           brew list
 
-  test-ubuntu:
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Write template configs
-        run: |
-          mkdir -p ~/.config/chezmoi && \
-          cat << EOT >> ~/.config/chezmoi/chezmoi.toml
-          [data]
-              name = "Test User"
-              email = "testuser@demo.com"
-              profile = "root-linux"
-          EOT
+  # test-ubuntu:
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-18.04, ubuntu-20.04]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - name: Write template configs
+  #       run: |
+  #         mkdir -p ~/.config/chezmoi && \
+  #         cat << EOT >> ~/.config/chezmoi/chezmoi.toml
+  #         [data]
+  #             name = "Test User"
+  #             email = "testuser@demo.com"
+  #             profile = "root-linux"
+  #         EOT
 
-      - name: Install configurations
-        run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+  #     - name: Install configurations
+  #       run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 
-      - name: Test installation
-        run: |
-          brew list
+  #     - name: Test installation
+  #       run: |
+  #         brew list
