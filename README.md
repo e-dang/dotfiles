@@ -18,6 +18,32 @@ If using iTerm2, you must manually import settings in the iTerm2 directory (see 
 sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 ```
 
+### Update
+
+If you made changes to your local state and want to apply them locally run:
+
+```
+chezmoi apply -v
+```
+
+To view the changes that chezmoi will make run either:
+
+```
+chezmoi apply -v -n
+```
+
+OR
+
+```
+chezmoi diff
+```
+
+If you want to apply changes that are stored in the remote git repository to your local machine run:
+
+```
+chezmoi update -v
+```
+
 ## Notes
 
 - eslintrc.js is not a global config. It is included for the cpjs function defined in .shell/functions.sh.
