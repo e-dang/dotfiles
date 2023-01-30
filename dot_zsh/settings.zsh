@@ -1,7 +1,8 @@
 export DISABLE_AUTO_UPDATE=true
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
 export HISTFILE="${ZSH_CACHE_DIR}/.zsh_history"
-autoload -Uz compinit && compinit -i -d "${ZSH_CACHE_DIR}/zcompdump-${ZSH_VERSION}"
+export ZSH_COMPDUMP="${ZSH_CACHE_DIR}/zcompdump-${HOST}"
+autoload -Uz compinit && compinit -i -d "${ZSH_CACHE_DIR}/zcompdump-${HOST}"
 setopt hist_ignore_all_dups       # ignore duplicated commands history list
 
 source ~/.zsh/oh-my-zsh.zsh
