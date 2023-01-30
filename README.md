@@ -48,3 +48,29 @@ chezmoi update -v
 
 - eslintrc.js is not a global config. It is included for the cpjs function defined in .shell/functions.sh.
 - .prettierrc.js is a global config, but also used for cpjs function.
+- Need to change default shell to homebrew zsh
+
+  - Add "\<path to homebrew zsh\>" to "/etc/shells" file
+
+    ```
+    sudo vim /etc/shells
+    ```
+
+  - Change to default login shell
+
+    ```
+    chsh -s <path to homebrew zsh>
+
+    ```
+
+  - Make sure new version of Zsh is in active
+
+    ```
+    echo $SHELL (should see path to homebrew zsh)
+    echo $ZSH_VERSION (should see homebrew zsh version)
+    ```
+
+  - Support homebrew completion with the command (below is example of path on Apple Silicon install)
+    ```
+    ln -s /opt/homebrew/completions/zsh/_brew ~/.cache/zsh/completions/_brew
+    ```
