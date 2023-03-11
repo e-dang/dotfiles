@@ -74,3 +74,14 @@ chezmoi update -v
     ```
     ln -s /opt/homebrew/completions/zsh/_brew ~/.cache/zsh/completions/_brew
     ```
+
+- Need to add completions for fluxcd
+
+```
+flux completion zsh > _flux
+
+mv _flux <zsh completions dir>
+```
+
+- Files in **Library** directory get added to **~/Library** (not root Library)
+- Library/KeyBindings/DefaultKeyBindings.dict updates the <kbd>Control</kbd> + <kbd>Command</kbd> + <kbd>Arrow Key</kbd> to be a no-op key combination. Without this MacOS issues an error beep each time you click this combo which is annoying in vscode since it moves a tab to another tab group.
