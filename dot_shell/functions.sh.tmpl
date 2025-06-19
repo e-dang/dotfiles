@@ -90,6 +90,8 @@ remove_pycache() {
     find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
+# Utility for escaping parentheses and brackets when giving jest a filepath that contains them
+# like when using nextjs or expo...fucking stupid file based routing bullshit
 escape() {
     local input="$1"
     # Escape parentheses and brackets one by one
