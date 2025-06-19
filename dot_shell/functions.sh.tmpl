@@ -90,6 +90,12 @@ remove_pycache() {
     find . | grep -E "(__pycache__|\.pytest_cache|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
+escape() {
+    local input="$1"
+    # Escape parentheses and brackets one by one
+    echo "$input" | sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g'
+}
+
 cpjs() { # cpjs -> copy javascript configs
   cp ~/.prettierrc.js $(pwd)
   cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
