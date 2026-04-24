@@ -28,3 +28,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # Find directory or file with name
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
+
+# Docker cleanup
+alias dockerkill='docker kill $(docker ps -aq)'
+alias dockerclean='docker system prune -a && docker volume prune -a'
