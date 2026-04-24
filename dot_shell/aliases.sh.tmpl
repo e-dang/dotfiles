@@ -29,6 +29,9 @@ alias path='echo -e ${PATH//:/\\n}'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
+# SearXNG
+alias searxng='docker compose -f $SEARXNG_HOME/docker-compose.yml up -d'
+
 # Docker cleanup
 alias dockerkill='docker kill $(docker ps -aq)'
 alias dockerclean='docker system prune -a && docker volume prune -a'
