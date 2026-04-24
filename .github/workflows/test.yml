@@ -10,7 +10,7 @@ jobs:
   test-macos:
     strategy:
       matrix:
-        os: [macos-11, macos-12]
+        os: [macos-14, macos-15]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Write template configs
@@ -21,40 +21,18 @@ jobs:
               name = "Test User"
               email = "testuser@demo.com"
               profile = "root-osx"
+              hostname = "test-ci"
           EOT
 
       - name: Remove preexisting binaries
         run: |
-          rm /usr/local/bin/aws && \
-          rm /usr/local/bin/aws_completer && \
-          rm /usr/local/bin/conda
+          rm -f /opt/homebrew/bin/aws || true
+          rm -f /opt/homebrew/bin/aws_completer || true
+          rm -f /opt/homebrew/bin/conda || true
 
       - name: Install configurations
-        run: sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+        run: sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply https://github.com/e-dang/dotfiles
 
       - name: Test installation
         run: |
           brew list
-
-  # test-ubuntu:
-  #   strategy:
-  #     matrix:
-  #       os: [ubuntu-18.04, ubuntu-20.04]
-  #   runs-on: ${{ matrix.os }}
-  #   steps:
-  #     - name: Write template configs
-  #       run: |
-  #         mkdir -p ~/.config/chezmoi && \
-  #         cat << EOT >> ~/.config/chezmoi/chezmoi.toml
-  #         [data]
-  #             name = "Test User"
-  #             email = "testuser@demo.com"
-  #             profile = "root-linux"
-  #         EOT
-
-  #     - name: Install configurations
-  #       run: sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
-
-  #     - name: Test installation
-  #       run: |
-  #         brew list
