@@ -112,7 +112,7 @@
     },
     "Non-ASCII Ligatures": false,
     "Use Italic Font": true,
-    "Unlimited Scrollback": false,
+    "Unlimited Scrollback": true,
     "Keyboard Map": {
         "0xf728-0x80000": {
             "Text": "d",
