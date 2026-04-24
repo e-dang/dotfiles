@@ -19,7 +19,15 @@
 {{-   $profile = promptString "profile (root-osx, osx, root-linux)" -}}
 {{- end -}}
 
+{{- $hostname := "" -}}
+{{- if (hasKey . "hostname") -}}
+{{-   $hostname = .hostname -}}
+{{- else -}}
+{{-   $hostname = promptStringOnce . "hostname" "hostname (default: e-dang)" "e-dang" -}}
+{{- end -}}
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     profile = {{ $profile | quote }}
+    hostname = {{ $hostname | quote }}
