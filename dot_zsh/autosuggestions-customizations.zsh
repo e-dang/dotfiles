@@ -1,5 +1,5 @@
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#4c4c4c'
-bindkey '^[OC' forward-word
+bindkey '^[OC' forward-char
 bindkey '\e[1;2C' forward-char
 bindkey '\e[1;2D' backward-kill-word
 
