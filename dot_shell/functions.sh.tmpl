@@ -98,6 +98,10 @@ escape() {
     echo "$input" | sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g'
 }
 
+killport() {
+  lsof -t -i tcp:$1 | xargs kill
+}
+
 cpjs() { # cpjs -> copy javascript configs
   cp ~/.prettierrc.js $(pwd)
   cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
