@@ -69,7 +69,6 @@
     "Disable Window Resizing": true,
     "Sync Title": false,
     "Prompt Before Closing 2": false,
-    "BM Growl": true,
     "Mouse Reporting": true,
     "Command": "",
     "Description": "Default",
@@ -90,7 +89,7 @@
     },
     "Custom Command": "No",
     "ASCII Anti Aliased": true,
-    "Non Ascii Font": "SourceCodeProForPowerline-Regular 14",
+    "Non Ascii Font": "MesloLGS-NF-Regular 14",
     "Vertical Spacing": 1,
     "Use Bold Font": true,
     "Option Key Sends": 0,
@@ -382,7 +381,7 @@
         "Blue Component": 0.820068895816803
     },
     "ASCII Ligatures": false,
-    "Name": "powerlevel9k",
+    "Name": "powerlevel10k",
     "Cursor Text Color": {
         "Green Component": 0.8732393383979797,
         "Red Component": 0.8732654452323914,
@@ -426,7 +425,7 @@
         "Blue Component": 0.4872579574584961
     },
     "Horizontal Spacing": 1,
-    "Normal Font": "InconsolataForPowerline 14",
+    "Normal Font": "MesloLGS-NF-Regular 14",
     "Ansi 2 Color": {
         "Green Component": 0.4825465977191925,
         "Red Component": 0.2713020741939545,
