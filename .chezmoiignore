@@ -9,3 +9,8 @@ Library/
 {{ if ne .chezmoi.os "linux" }}
 .fonts/
 {{ end }}
+{{ if .is_work }}
+.gitconfig
+.gitignore
+.vscode/extensions/ericdang.custom-themes/package.json
+{{ end }}

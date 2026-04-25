@@ -33,9 +33,17 @@
 {{-   $global_vault_path = promptStringOnce . "global_vault_path" "global vault path (leave empty if none)" "" -}}
 {{- end -}}
 
+{{- $is_work := false -}}
+{{- if (hasKey . "is_work") -}}
+{{-   $is_work = .is_work -}}
+{{- else -}}
+{{-   $is_work = promptBoolOnce . "is_work" "is this a work machine" false -}}
+{{- end -}}
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     profile = {{ $profile | quote }}
     hostname = {{ $hostname | quote }}
     global_vault_path = {{ $global_vault_path | quote }}
+    is_work = {{ $is_work }}
