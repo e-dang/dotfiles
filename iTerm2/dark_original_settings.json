@@ -89,7 +89,7 @@
     },
     "Custom Command": "No",
     "ASCII Anti Aliased": true,
-    "Non Ascii Font": "MesloLGS-NF-Regular 14",
+    "Non Ascii Font": "MesloLGSNerdFont-Regular 14",
     "Vertical Spacing": 1,
     "Use Bold Font": true,
     "Option Key Sends": 0,
@@ -425,7 +425,7 @@
         "Blue Component": 0.4872579574584961
     },
     "Horizontal Spacing": 1,
-    "Normal Font": "MesloLGS-NF-Regular 14",
+    "Normal Font": "MesloLGSNerdFont-Regular 14",
     "Ansi 2 Color": {
         "Green Component": 0.4825465977191925,
         "Red Component": 0.2713020741939545,
