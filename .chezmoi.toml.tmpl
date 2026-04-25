@@ -26,8 +26,16 @@
 {{-   $hostname = promptStringOnce . "hostname" "hostname (default: e-dang)" "e-dang" -}}
 {{- end -}}
 
+{{- $global_vault_path := "" -}}
+{{- if (hasKey . "global_vault_path") -}}
+{{-   $global_vault_path = .global_vault_path -}}
+{{- else -}}
+{{-   $global_vault_path = promptStringOnce . "global_vault_path" "global vault path (leave empty if none)" "" -}}
+{{- end -}}
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     profile = {{ $profile | quote }}
     hostname = {{ $hostname | quote }}
+    global_vault_path = {{ $global_vault_path | quote }}
