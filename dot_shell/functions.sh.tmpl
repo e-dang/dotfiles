@@ -102,6 +102,29 @@ killport() {
   lsof -t -i tcp:$1 | xargs kill
 }
 
+init-notes() {
+  local vault_type="${1:-local}"
+  local target="${2:-.}"
+
+  if [[ "$vault_type" != "local" && "$vault_type" != "global" ]]; then
+    echo "Usage: init-notes [local|global] [target-path]"
+    echo "  local   — repository-scoped vault with feature folders (default)"
+    echo "  global  — flat knowledge base organized by tags"
+    return 1
+  fi
+
+  local template_dir="$HOME/.config/obsidian/templates/$vault_type"
+  if [[ ! -d "$template_dir" ]]; then
+    echo "Template directory not found: $template_dir"
+    echo "Run 'chezmoi apply' to deploy obsidian templates first."
+    return 1
+  fi
+
+  mkdir -p "$target"
+  cp -r "$template_dir"/* "$target/"
+  echo "Initialized $vault_type vault at $target"
+}
+
 cpjs() { # cpjs -> copy javascript configs
   cp ~/.prettierrc.js $(pwd)
   cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
