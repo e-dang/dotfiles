@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Lines that must exist in ~/.bashrc. Each is checked individually —
+# if already present the line is left where it is, otherwise it's appended.
+MANAGED_LINES=(
+  '[ -n "$PS1" ] && source ~/.bash/settings.sh'
+)
+
+# Read current file contents from stdin
+CURRENT=$(cat)
+
+# Start with existing content
+OUTPUT="$CURRENT"
+
+# Append any managed lines that are missing
+for line in "${MANAGED_LINES[@]}"; do
+  if ! echo "$CURRENT" | grep -qF "$line"; then
+    OUTPUT="$OUTPUT
+$line"
+  fi
+done
+
+echo "$OUTPUT"
