@@ -6,7 +6,7 @@ if [[ $? != 0 ]] ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 
 tap "homebrew/cask-drivers"
 
@@ -27,7 +27,6 @@ brew "sops"
 brew "jq" # json cli parser
 brew "yq" # yaml cli parser
 brew "neovim"
-brew "tldr"
 brew "ripgrep"
 brew "chezmoi"
 {{ if eq .profile "root-osx" -}}
@@ -40,7 +39,7 @@ cask "visual-studio-code"
 cask "iterm2"
 cask "google-chrome"
 cask "rectangle"
-cask "docker"
+cask "docker-desktop"
 cask "spotify"
 cask "figma"
 cask "lm-studio"
