@@ -1,0 +1,27 @@
+{{- /* Vault-agnostic explore command. Global vault path injected by chezmoi. */ -}}
+# Explore Notes
+
+Search for information related to: $ARGUMENTS
+
+## Vaults
+
+Search all vaults that exist:
+{{ if .global_vault_path }}
+- `{{ .global_vault_path }}` (global knowledge base)
+{{- end }}
+- `notes/` in the current repository (local vault, if it exists)
+
+## Steps
+
+1. **Discover vaults** — Check which vaults exist by looking for `_reference-vault-guide.md` in each location. Only search vaults that are present.
+2. **Learn each vault** — Read `_reference-vault-guide.md` in each existing vault to understand its structure, note types, tag conventions, and search techniques.
+3. **Search** — Search each vault using the techniques described in its guide. Cast a wide net with multiple keywords and synonyms. Use tag-based searches (`grep "project/..."`, `grep "area/..."`) and tldr searches (`grep "^tldr:"`) for efficient scanning.
+4. **Read and follow links** — Read the most relevant notes. Follow wikilinks (`[[linked-note]]`) to related notes that may provide additional context.
+5. **Synthesize** — Present findings as a concise answer to the query. Include:
+   - A direct answer or summary addressing what was asked
+   - References to specific notes found (use file paths so the user can navigate to them)
+   - Any related notes that provide additional context
+   - If the query touches on decisions, include reasoning from decision notes
+   - If the query touches on known problems, surface any bug or issue notes
+
+Do not reproduce entire notes — summarize and point the user to the source files.
