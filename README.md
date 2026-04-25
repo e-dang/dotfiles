@@ -18,6 +18,17 @@ If using iTerm2, you must manually import settings in the iTerm2 directory (see 
 sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
 ```
 
+### Work Machine Setup
+
+On a work machine, some files (`.gitconfig`, `.gitignore`, `.vscode/extensions/ericdang.custom-themes/package.json`) are managed externally and should not be overwritten by chezmoi after initial setup.
+
+1. Run the install command above. When prompted, set `is_work` to **false** so that git configs are applied on the first run.
+2. After the initial apply, update your chezmoi config to mark this as a work machine:
+   ```
+   chezmoi edit-config
+   ```
+   Set `is_work = true` under `[data]`. Subsequent runs of `chezmoi apply` will skip those files.
+
 ### Update
 
 If you made changes to your local state and want to apply them locally run:
