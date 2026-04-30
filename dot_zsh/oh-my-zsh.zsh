@@ -77,7 +77,7 @@ zstyle ':omz:update' mode disabled  # chezmoi manages updates via .chezmoiextern
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos kubectl urltools encode64 extract copypath copyfile docker alias-finder zsh-syntax-highlighting history-substring-search zsh-autosuggestions)
+plugins=(git macos urltools encode64 extract copypath copyfile zsh-syntax-highlighting history-substring-search zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
