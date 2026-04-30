@@ -36,6 +36,7 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
+    my_vcs                  # per-counter colored git status segments
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -496,8 +497,10 @@
 
   # Disable the default Git status formatting.
   typeset -g POWERLEVEL9K_VCS_DISABLE_GITSTATUS_FORMATTING=true
-  # Install our own Git status formatter.
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${$((my_git_formatter()))+${my_git_format}}'
+  # Render `vcs` invisibly — it stays in the elements list to trigger gitstatus,
+  # but visible git info is rendered by `my_vcs` below as separate colored chips.
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION=
+  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION=
   # Enable counters for staged, unstaged, etc.
   typeset -g POWERLEVEL9K_VCS_{STAGED,UNSTAGED,UNTRACKED,CONFLICTED,COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=-1
 
@@ -510,6 +513,50 @@
   # using them. If you do, your prompt may become slow even when your current directory
   # isn't in an svn or hg repository.
   typeset -g POWERLEVEL9K_VCS_BACKENDS=(git)
+
+  ##################################[ my_vcs: split git status ]##################################
+  # Renders each git-status counter (ahead/behind, staged, unstaged, untracked, stashes,
+  # conflicts) as its own p10k segment with a distinct background color. Drop-in companion
+  # to the built-in `vcs` segment.
+  function prompt_my_vcs() {
+    emulate -L zsh
+
+    [[ $VCS_STATUS_RESULT == ok-* ]] || return
+
+    local clean=2
+    local modified=3
+    local conflicted=9
+
+    local latest
+    if (( ${VCS_STATUS_COMMITS_BEHIND} || ${VCS_STATUS_COMMITS_AHEAD} || ${VCS_STATUS_PUSH_COMMITS_BEHIND} || ${VCS_STATUS_PUSH_COMMITS_AHEAD} || ${VCS_STATUS_NUM_STAGED} || ${VCS_STATUS_NUM_UNSTAGED} || ${VCS_STATUS_NUM_UNTRACKED} || ${VCS_STATUS_STASHES} )); then
+      latest=${modified}
+    elif (( ${VCS_STATUS_NUM_CONFLICTED} )); then
+      latest=${conflicted}
+    else
+      latest=${clean}
+    fi
+
+    local host_icon=
+    case $VCS_STATUS_REMOTE_URL in
+      *github.com*)    host_icon=$'' ;;   # codicons GitHub (octocat)
+      *gitlab.com*)    host_icon=$'' ;;   # GitLab
+      *bitbucket*)     host_icon=$'' ;;   # Bitbucket
+    esac
+
+    if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+      p10k segment -f 232 -b "${latest}" -i " ${host_icon:+$host_icon }${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}" -t ${VCS_STATUS_LOCAL_BRANCH//\%/%%}
+    fi
+
+    (( VCS_STATUS_COMMITS_BEHIND      )) && p10k segment -f 232 -b 5 -t $'⇣'"${VCS_STATUS_COMMITS_BEHIND}"
+    (( VCS_STATUS_COMMITS_AHEAD       )) && p10k segment -f 232 -b 2 -t $'⇡'"${VCS_STATUS_COMMITS_AHEAD}"
+    (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p10k segment -f 232 -b 5 -t $'⇠'"${VCS_STATUS_PUSH_COMMITS_BEHIND}"
+    (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p10k segment -f 232 -b 2 -t $'⇢'"${VCS_STATUS_PUSH_COMMITS_AHEAD}"
+    (( VCS_STATUS_NUM_STAGED          )) && p10k segment -f 232 -b 2 -t "+${VCS_STATUS_NUM_STAGED}"
+    (( VCS_STATUS_NUM_UNSTAGED        )) && p10k segment -f 232 -b 6 -t "!${VCS_STATUS_NUM_UNSTAGED}"
+    (( VCS_STATUS_NUM_UNTRACKED       )) && p10k segment -f 232 -b 5 -t "?${VCS_STATUS_NUM_UNTRACKED}"
+    (( VCS_STATUS_STASHES             )) && p10k segment -f 232 -b 6 -t "*${VCS_STATUS_STASHES}"
+    (( VCS_STATUS_NUM_CONFLICTED      )) && p10k segment -f 232 -b 9 -t "~${VCS_STATUS_NUM_CONFLICTED}"
+  }
 
   ##########################[ status: exit code of the last command ]###########################
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
