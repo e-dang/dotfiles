@@ -130,6 +130,64 @@ cpjs() { # cpjs -> copy javascript configs
   cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
 }
 
+# Idempotently start Open WebUI in Docker and open it in the browser.
+# Data is persisted to ~/.local/share/open-webui.
+open-webui() {
+  local name="open-webui"
+  local port=8095
+  local data_dir="$HOME/.local/share/open-webui"
+  local image="ghcr.io/open-webui/open-webui:main"
+  local url="http://localhost:${port}"
+
+  if ! docker info >/dev/null 2>&1; then
+    echo "Docker is not running. Start Docker Desktop and try again."
+    return 1
+  fi
+
+  mkdir -p "$data_dir"
+
+  local secret_file="${data_dir}/.webui_secret_key"
+  if [[ ! -f "$secret_file" ]]; then
+    openssl rand -hex 32 > "$secret_file"
+    chmod 600 "$secret_file"
+  fi
+
+  local container_status
+  container_status=$(docker inspect -f '{{`{{.State.Status}}`}}' "$name" 2>/dev/null)
+
+  case "$container_status" in
+    running)
+      ;;
+    "")
+      echo "Creating $name container..."
+      docker run -d \
+        --name "$name" \
+        -p "${port}:8080" \
+        -v "${data_dir}:/app/backend/data" \
+        -e "WEBUI_SECRET_KEY=$(<"$secret_file")" \
+        --restart unless-stopped \
+        "$image" >/dev/null || return 1
+      ;;
+    *)
+      echo "Starting $name container..."
+      docker start "$name" >/dev/null || return 1
+      ;;
+  esac
+
+  echo "Waiting for ${url}..."
+  local i=0
+  until curl -fsS --max-time 2 "$url" >/dev/null 2>&1; do
+    if (( i >= 120 )); then
+      echo "Timed out waiting for ${url}"
+      return 1
+    fi
+    sleep 1
+    i=$((i + 1))
+  done
+
+  open "$url"
+}
+
 {{ if eq .profile "root-osx" -}}
 LLVM_PATH=$(brew --prefix)/opt/llvm/bin
 GCC_PATH=$(brew --prefix)/opt/gcc/bin
