@@ -547,15 +547,15 @@
       p10k segment -f 232 -b "${latest}" -i " ${host_icon:+$host_icon }${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}" -t ${VCS_STATUS_LOCAL_BRANCH//\%/%%}
     fi
 
-    (( VCS_STATUS_COMMITS_BEHIND      )) && p10k segment -f 232 -b 5 -t $'⇣'"${VCS_STATUS_COMMITS_BEHIND}"
-    (( VCS_STATUS_COMMITS_AHEAD       )) && p10k segment -f 232 -b 2 -t $'⇡'"${VCS_STATUS_COMMITS_AHEAD}"
-    (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p10k segment -f 232 -b 5 -t $'⇠'"${VCS_STATUS_PUSH_COMMITS_BEHIND}"
-    (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p10k segment -f 232 -b 2 -t $'⇢'"${VCS_STATUS_PUSH_COMMITS_AHEAD}"
-    (( VCS_STATUS_NUM_STAGED          )) && p10k segment -f 232 -b 2 -t "+${VCS_STATUS_NUM_STAGED}"
-    (( VCS_STATUS_NUM_UNSTAGED        )) && p10k segment -f 232 -b 6 -t "!${VCS_STATUS_NUM_UNSTAGED}"
-    (( VCS_STATUS_NUM_UNTRACKED       )) && p10k segment -f 232 -b 5 -t "?${VCS_STATUS_NUM_UNTRACKED}"
-    (( VCS_STATUS_STASHES             )) && p10k segment -f 232 -b 6 -t "*${VCS_STATUS_STASHES}"
-    (( VCS_STATUS_NUM_CONFLICTED      )) && p10k segment -f 232 -b 9 -t "~${VCS_STATUS_NUM_CONFLICTED}"
+    (( VCS_STATUS_COMMITS_BEHIND      )) && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_COMMITS_BEHIND}"
+    (( VCS_STATUS_COMMITS_AHEAD       )) && p10k segment -f 232 -b 2 -i "" -t "${VCS_STATUS_COMMITS_AHEAD}"
+    (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_PUSH_COMMITS_BEHIND}"
+    (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p10k segment -f 232 -b 2 -i "" -t "${VCS_STATUS_PUSH_COMMITS_AHEAD}"
+    (( VCS_STATUS_NUM_STAGED          )) && p10k segment -f 232 -b 2 -i "" -t "${VCS_STATUS_NUM_STAGED}"
+    (( VCS_STATUS_NUM_UNSTAGED        )) && p10k segment -f 232 -b 6 -i "" -t "${VCS_STATUS_NUM_UNSTAGED}"
+    (( VCS_STATUS_NUM_UNTRACKED       )) && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_NUM_UNTRACKED}"
+    (( VCS_STATUS_STASHES             )) && p10k segment -f 232 -b 6 -i "" -t "${VCS_STATUS_STASHES}"
+    (( VCS_STATUS_NUM_CONFLICTED      )) && p10k segment -f 232 -b 9 -i "" -t "${VCS_STATUS_NUM_CONFLICTED}"
   }
 
   ##########################[ status: exit code of the last command ]###########################
