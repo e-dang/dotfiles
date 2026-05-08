@@ -552,7 +552,7 @@
     (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_PUSH_COMMITS_BEHIND}"
     (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p10k segment -f 232 -b 2 -i "" -t "${VCS_STATUS_PUSH_COMMITS_AHEAD}"
     (( VCS_STATUS_NUM_STAGED          )) && p10k segment -f 232 -b 2 -i "" -t "${VCS_STATUS_NUM_STAGED}"
-    (( VCS_STATUS_NUM_UNSTAGED        )) && p10k segment -f 232 -b 6 -i "" -t "${VCS_STATUS_NUM_UNSTAGED}"
+    (( VCS_STATUS_NUM_UNSTAGED        )) && p10k segment -f 232 -b 6 -i "" -t "${VCS_STATUS_NUM_UNSTAGED}"
     (( VCS_STATUS_NUM_UNTRACKED       )) && p10k segment -f 232 -b 5 -i "" -t "${VCS_STATUS_NUM_UNTRACKED}"
     (( VCS_STATUS_STASHES             )) && p10k segment -f 232 -b 6 -i "" -t "${VCS_STATUS_STASHES}"
     (( VCS_STATUS_NUM_CONFLICTED      )) && p10k segment -f 232 -b 9 -i "" -t "${VCS_STATUS_NUM_CONFLICTED}"
