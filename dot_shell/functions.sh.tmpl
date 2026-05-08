@@ -130,49 +130,34 @@ cpjs() { # cpjs -> copy javascript configs
   cp $(chezmoi source-path)/eslintrc.js $(pwd)/.eslintrc.js
 }
 
-# Idempotently start Open WebUI in Docker and open it in the browser.
-# Data is persisted to ~/.local/share/open-webui.
-open-webui() {
-  local name="open-webui"
-  local port=8095
+# --- local-ai stack (Open WebUI + SearXNG via compose) ---
+
+_local_ai_compose_file="$HOME/.config/local-ai/docker-compose.yml"
+
+# Print the Open WebUI secret key, generating it on first call. Used inline
+# so OPEN_WEBUI_SECRET_KEY only enters the env of the docker compose process.
+_local_ai_secret() {
   local data_dir="$HOME/.local/share/open-webui"
-  local image="ghcr.io/open-webui/open-webui:main"
-  local url="http://localhost:${port}"
+  local secret_file="${data_dir}/.webui_secret_key"
+  mkdir -p "$data_dir"
+  if [[ ! -f "$secret_file" ]]; then
+    openssl rand -hex 32 > "$secret_file"
+    chmod 600 "$secret_file"
+  fi
+  cat "$secret_file"
+}
+
+# Bring up Open WebUI from the local-ai compose and open it in the browser.
+webui() {
+  local url="http://localhost:8095"
 
   if ! docker info >/dev/null 2>&1; then
     echo "Docker is not running. Start Docker Desktop and try again."
     return 1
   fi
 
-  mkdir -p "$data_dir"
-
-  local secret_file="${data_dir}/.webui_secret_key"
-  if [[ ! -f "$secret_file" ]]; then
-    openssl rand -hex 32 > "$secret_file"
-    chmod 600 "$secret_file"
-  fi
-
-  local container_status
-  container_status=$(docker inspect -f '{{`{{.State.Status}}`}}' "$name" 2>/dev/null)
-
-  case "$container_status" in
-    running)
-      ;;
-    "")
-      echo "Creating $name container..."
-      docker run -d \
-        --name "$name" \
-        -p "${port}:8080" \
-        -v "${data_dir}:/app/backend/data" \
-        -e "WEBUI_SECRET_KEY=$(<"$secret_file")" \
-        --restart unless-stopped \
-        "$image" >/dev/null || return 1
-      ;;
-    *)
-      echo "Starting $name container..."
-      docker start "$name" >/dev/null || return 1
-      ;;
-  esac
+  OPEN_WEBUI_SECRET_KEY=$(_local_ai_secret) \
+    docker compose -f "$_local_ai_compose_file" up -d open-webui || return 1
 
   echo "Waiting for ${url}..."
   local i=0
@@ -186,6 +171,39 @@ open-webui() {
   done
 
   open "$url"
+}
+
+# Bring up SearXNG (and its valkey dependency) from the local-ai compose.
+searxng() {
+  if ! docker info >/dev/null 2>&1; then
+    echo "Docker is not running. Start Docker Desktop and try again."
+    return 1
+  fi
+  OPEN_WEBUI_SECRET_KEY=$(_local_ai_secret) \
+    docker compose -f "$_local_ai_compose_file" up -d searxng
+}
+
+# Pull the latest Open WebUI image and recreate the container.
+update-webui() {
+  if ! docker info >/dev/null 2>&1; then
+    echo "Docker is not running. Start Docker Desktop and try again."
+    return 1
+  fi
+  OPEN_WEBUI_SECRET_KEY=$(_local_ai_secret) \
+    docker compose -f "$_local_ai_compose_file" pull open-webui || return 1
+  webui
+}
+
+# Pull the latest SearXNG image and recreate the container.
+update-searxng() {
+  if ! docker info >/dev/null 2>&1; then
+    echo "Docker is not running. Start Docker Desktop and try again."
+    return 1
+  fi
+  OPEN_WEBUI_SECRET_KEY=$(_local_ai_secret) \
+    docker compose -f "$_local_ai_compose_file" pull searxng || return 1
+  OPEN_WEBUI_SECRET_KEY=$(_local_ai_secret) \
+    docker compose -f "$_local_ai_compose_file" up -d searxng
 }
 
 {{ if eq .profile "root-osx" -}}
