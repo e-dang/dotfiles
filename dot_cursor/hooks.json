@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "jq -r '.file_path // empty' | { read -r f; case \"$f\" in *.ts|*.tsx|*.js|*.jsx) cd \"${CURSOR_PROJECT_DIR}\" && yarn format \"$f\" 2>/dev/null || true ;; *.rb) rubocop -a \"$f\" 2>/dev/null || true ;; esac; }"
+      }
+    ]
+  }
+}
