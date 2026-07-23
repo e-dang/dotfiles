@@ -1,5 +1,5 @@
 ---
-description: Coding style — yarn, no IIFE locals, no single-use locals
+description: Coding style — yarn, no IIFEs, React forms, useCallback, null
 alwaysApply: true
 ---
 
@@ -34,12 +34,44 @@ if (!selection) {
 
 ### Allowed
 
-- `useMemo(() => ..., [deps])`, `useCallback`, `useEffect` — React/hook callbacks are not IIFEs for this rule
+- `useMemo(() => ..., [deps])` and `useCallback` — hook callbacks are not IIFEs for this rule
 - IIFEs in tests or build scripts when there is a concrete reason (module scope, legacy constraint)
 
 ### When logic is reused
 
 Extract a **named function** at module scope if it is shared. Do not use an anonymous IIFE at the call site.
+
+## React forms: handlers, not effects
+
+- If a user action changes one field and must update another (e.g. deselecting a location prunes selected flows), put that logic in the **triggering control's `onChange` / `onSubmit` handler** — as close as possible to the action.
+- Do **not** use `useEffect` + `setValue` to react to form values the user just changed.
+- `useEffect` + `setValue` is only for **async hydration** (data not available at click time) or other non-user-initiated work.
+- `useWatch` + `setValue` to mirror a field's own value is an anti-pattern — bind with the form/lens API instead.
+
+```typescript
+// ❌ BAD — reactive sync after user changed locations
+useEffect(() => {
+  setValue('selectedFlows', selectedFlows.filter(...));
+}, [flowLocationIds, selectedFlows, setValue]);
+
+// ✅ GOOD — same logic in the location multiselect handler
+onChange={(nextLocations) => {
+  onChange(nextLocations);
+  setValue('selectedFlows', getValues('selectedFlows').filter(...));
+}}
+```
+
+## useCallback
+
+- Wrap event handlers in `useCallback` when passed to child components, render props, or listed in hook dependency arrays.
+- Prefer a named `useCallback` over a large inline handler in JSX when the handler updates multiple form fields.
+
+## null vs undefined
+
+- Prefer **`null`** for intentional absence in app/form/domain types.
+- Use **`undefined`** only for optional properties, optional params, and **query/API params** where omitting the key means unset.
+- Nullable fields: `T | null` (required key), not optional `T?`, when the key is always present on the object.
+- Absence checks: `value !== null`, not `!== undefined`, unless the type is genuinely optional.
 
 ## No single-use local variables
 
