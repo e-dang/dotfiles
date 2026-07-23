@@ -66,6 +66,35 @@ onChange={(nextLocations) => {
 - Wrap event handlers in `useCallback` when passed to child components, render props, or listed in hook dependency arrays.
 - Prefer a named `useCallback` over a large inline handler in JSX when the handler updates multiple form fields.
 
+## File layout
+
+Order module contents top to bottom:
+
+1. **Public API** — exported types/interfaces, then the main exported function or component.
+2. **Private module members** — non-exported types, helpers, and components used only by the public export.
+
+Put private functions, types, and components **below** the main exported thing — never above it.
+
+```typescript
+// ✅ GOOD
+export interface WidgetProps { ... }
+
+export function Widget(props: WidgetProps) {
+  return <WidgetBody {...props} />;
+}
+
+interface WidgetBodyProps { ... }
+
+function WidgetBody(props: WidgetBodyProps) { ... }
+
+// ❌ BAD — private helper above the export
+function WidgetBody(props: WidgetBodyProps) { ... }
+
+export function Widget(props: WidgetProps) { ... }
+```
+
+When a file has one exported component and a private sub-component, keep both in the same file; do **not** split into a separate file unless the user asks. The private component still goes at the bottom.
+
 ## null vs undefined
 
 - Prefer **`null`** for intentional absence in app/form/domain types.
