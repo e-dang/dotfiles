@@ -1,0 +1,76 @@
+---
+description: Coding style — yarn, no IIFE locals, no single-use locals
+alwaysApply: true
+---
+
+# Coding style
+
+## Package manager
+
+When working in TypeScript or JavaScript, use **yarn** as the package manager. Use yarn when running tests, scripts, or executing `node_modules` binaries. Do not use npx or npm.
+
+## No IIFEs for local values
+
+Do **not** wrap logic in an immediately invoked function expression just to assign a local `const`.
+
+```typescript
+// ❌ BAD
+const dateRange = (() => {
+  if (!selection) return {mode: 'dynamic', range: 'PAST_30_DAYS'};
+  if (selection.preset === 'custom') return {mode: 'fixed', start, end};
+  return {mode: 'dynamic', range: MAP[selection.preset]};
+})();
+
+// ✅ GOOD — plain control flow in the same scope
+let dateRange: CreateComplianceAuditTemplateInput['dateRange'];
+if (!selection) {
+  dateRange = {mode: 'dynamic', range: 'PAST_30_DAYS'};
+} else if (selection.preset === 'custom') {
+  dateRange = {mode: 'fixed', start, end};
+} else {
+  dateRange = {mode: 'dynamic', range: MAP[selection.preset]};
+}
+```
+
+### Allowed
+
+- `useMemo(() => ..., [deps])`, `useCallback`, `useEffect` — React/hook callbacks are not IIFEs for this rule
+- IIFEs in tests or build scripts when there is a concrete reason (module scope, legacy constraint)
+
+### When logic is reused
+
+Extract a **named function** at module scope if it is shared. Do not use an anonymous IIFE at the call site.
+
+## No single-use local variables
+
+Do **not** declare a local variable that is referenced in only one place. Inline the expression at the use site.
+
+```typescript
+// ❌ BAD — binding used once
+const isQueryEnabled = enabled && Boolean(queryParams.locationIds?.length);
+
+useQuery({
+  enabled: isQueryEnabled,
+});
+
+// ✅ GOOD — inline
+useQuery({
+  enabled: enabled && Boolean(queryParams.locationIds?.length),
+});
+```
+
+```typescript
+// ❌ BAD
+const label = item.name.trim();
+return <span>{label}</span>;
+
+// ✅ GOOD
+return <span>{item.name.trim()}</span>;
+```
+
+### Allowed
+
+- Locals used **two or more times** (avoid repeating the same expression)
+- Locals that exist only to give a **non-obvious** value a name where inlining would hurt readability (rare — prefer a named function if the expression is complex)
+- Destructured bindings and parameters (not “declared then used once” temps)
+- Hook return values kept for a stable dependency array when the same value is listed in deps

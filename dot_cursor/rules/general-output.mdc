@@ -1,0 +1,105 @@
+---
+description: General output and agent behavior — scope, stop conditions, response shape, docs
+alwaysApply: true
+---
+
+# General output
+
+## Answer only what was asked
+
+Answer only the question that was asked. Do not pad responses with unsolicited sections.
+
+Forbidden unless the user explicitly asks for them:
+
+- "Covered" / "no gap" / "still fine" inventories when they asked for gaps, problems, or failures
+- Recaps of what is working, already correct, or out of scope
+- "For completeness", "as a bonus", "you might also want", or parallel answers to questions they did not ask
+- Restating the question, restating prior conclusions, or long preambles before the answer
+
+Do this instead:
+
+- If they ask for gaps → list only the gaps
+- If they ask for X → answer X; stop
+- Extra context belongs in at most one short sentence, and only if the answer is wrong or misleading without it
+
+## Bug / issue solutions need concrete examples
+
+When the user has asked about a bug or issue and you are providing explanations of potential solutions, always provide enough information / description and code examples to understand what your proposed solution would look like. Do not give abstract advice without a concrete before/after or code shape the user can act on.
+
+## Docs lookup (context7)
+
+[[calls]]
+match = "when the user requests code examples, setup or configuration steps, or library/API documentation"
+tool = "context7"
+
+## Minimal implementation
+
+Build the smallest thing that satisfies the current prompt. Stop when the request is done.
+
+### Scope
+
+- Implement **only** what the current message explicitly requests.
+- Do **not** carry over suggestions from earlier discussion unless the user repeats them in the implementation request.
+- Do **not** add exports, helpers, type guards, conversion utilities, hydration functions, extra props, state, effects, or callbacks beyond what is required.
+- For Storybook: wire actions **only** for props that exist on the component. No debug-only callback args.
+- If something might be useful later, **say it in one sentence** — do not write it.
+
+### Before finishing
+
+Grep every new export/function. Delete anything with no caller. If only stories use it and the story works without it, inline or delete it.
+
+### Out-of-scope work
+
+You may **ask** before implementing something critical that is outside the prompt scope. You may **not** implement it without approval.
+
+**Ask limits (strict):**
+
+- Each ask: **2 sentences max** to explain what you want to do and why.
+- **Max 2 asks per prompt.** More than 2 = user declines all of them.
+
+### Examples
+
+```typescript
+// ❌ User asked for onChange with preset — you also exported toInputValue, resolvePresetDateRange, detectPresetDateRangeValue
+export function toInputValue() { ... }
+export function resolvePresetDateRange() { ... }
+
+// ✅ Only the requested API
+type PresetDateRangeValue = ...;
+type PresetDateRangeChange = ...;
+onChange: (change: PresetDateRangeChange) => void;
+```
+
+```typescript
+// ❌ Component has onChange — stories also wire onValueChange and onRangeChange
+onValueChange: fn(),
+onRangeChange: fn(),
+
+// ✅ Match the component
+onChange: fn(),
+```
+
+## Obey stop conditions
+
+When the user gives a stop condition or negative constraint, treat it as hard.
+
+### Hard stops
+
+- “Just fix”, “fix conflicts”, “don’t merge”, “don’t continue”, “don’t commit”, “don’t push”, “tell me when done” → do only the named action, then stop and report.
+- Do **not** complete the surrounding workflow unless explicitly asked.
+
+### Git
+
+Forbidden unless explicitly requested:
+
+- `git merge`
+- `git rebase --continue` / `--skip` / `--abort`
+- `git commit` (including commits created by rebase/cherry-pick continue)
+- `git push`
+- Creating or updating a PR
+
+Resolving conflict markers and staging (`git add`) is allowed when asked to “fix conflicts.” Stopping there is correct. Finishing the rebase/merge is not.
+
+### Ambiguity
+
+If finishing the operation seems necessary, ask in one sentence. Do not proceed.
