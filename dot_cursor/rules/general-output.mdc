@@ -72,7 +72,7 @@ Build the smallest thing that satisfies the current prompt. Stop when the reques
 
 ### Before finishing
 
-Grep every new export/function. Delete anything with no caller. If only stories use it and the story works without it, inline or delete it.
+Grep every new export/function. Delete anything with no caller. If only stories use it and the story works without it, inline or delete it. **One caller → inline; do not extract a helper or export.**
 
 ### Out-of-scope work
 

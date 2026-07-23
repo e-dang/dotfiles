@@ -66,6 +66,28 @@ onChange={(nextLocations) => {
 - Wrap event handlers in `useCallback` when passed to child components, render props, or listed in hook dependency arrays.
 - Prefer a named `useCallback` over a large inline handler in JSX when the handler updates multiple form fields.
 
+## useMemo for derived values
+
+Memoize arrays, objects, and other derived values passed as **props**, listed in **hook dependency arrays**, or used as **query keys** when the source data has not changed.
+
+Inline `.map()`, `.filter()`, object spreads, and `{...}` literals in JSX/props create a **new reference every render**. That retriggers child effects, `useList*` hooks, React Query, and memoized children even when the underlying data is unchanged.
+
+```typescript
+// ❌ BAD — new array every render
+<FlowSelect locationIds={selectedLocations.map((location) => location.id)} />;
+
+// ✅ GOOD
+const locationIds = useMemo(() => selectedLocations.map((location) => location.id), [selectedLocations]);
+
+<FlowSelect locationIds={locationIds} />;
+```
+
+### Allowed without useMemo
+
+- Primitives derived once and used inline (`selectedLocations.length`, a boolean flag)
+- Values intentionally recomputed every render because the expression is cheap and nothing downstream depends on referential stability
+- Literals that are not passed as props or hook deps
+
 ## File layout
 
 Order module contents top to bottom:
@@ -135,3 +157,47 @@ return <span>{item.name.trim()}</span>;
 - Locals that exist only to give a **non-obvious** value a name where inlining would hurt readability (rare — prefer a named function if the expression is complex)
 - Destructured bindings and parameters (not “declared then used once” temps)
 - Hook return values kept for a stable dependency array when the same value is listed in deps
+
+## No one-off helpers
+
+Do **not** introduce a named function — module-scope or local — that is called from **one place only**. Inline the logic at that call site.
+
+This applies to default-value builders, small transforms, count/format helpers, and new `export function` utilities with a single caller. If you are about to add a helper, grep for reuse first; if there is no second caller, inline it.
+
+```typescript
+// ❌ BAD — helper used once
+function defaultSelectedLocations(locationId: string | null) {
+  if (locationId === null) return [];
+  return [{ id: locationId, attributes: { name: '', ... } }];
+}
+
+defaultValues: {
+  selectedLocations: defaultSelectedLocations(locationId),
+}
+
+// ✅ GOOD — inline
+defaultValues: {
+  selectedLocations:
+    locationId === null
+      ? []
+      : [{ id: locationId, attributes: { name: '', address: null, city: null, state: null, zip: null } }],
+}
+```
+
+```typescript
+// ❌ BAD — exported utility with one caller
+export function countSelectableSignInFlows(data, included, metaTotal) { ... }
+
+// ✅ GOOD — inline at the only call site inside the useMemo that needs it
+if (metaTotal != null) {
+  const parentGlobalCount = (included ?? []).filter(...).length;
+  return metaTotal - parentGlobalCount;
+}
+return flows.length;
+```
+
+### Allowed
+
+- **Private sub-components** in the same file (see File layout) — UI decomposition is not a one-off helper
+- **Module-scope functions used in two or more places** in the same file or across the repo
+- **Shared domain/query utilities** with multiple real callers — not "might be reused later"
