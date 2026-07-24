@@ -1,5 +1,5 @@
 ---
-description: Coding style — yarn, no IIFEs, React forms, useCallback, null
+description: Coding style — yarn, no IIFEs, React forms, useCallback, null, JSON:API
 alwaysApply: true
 ---
 
@@ -201,3 +201,47 @@ return flows.length;
 - **Private sub-components** in the same file (see File layout) — UI decomposition is not a one-off helper
 - **Module-scope functions used in two or more places** in the same file or across the repo
 - **Shared domain/query utilities** with multiple real callers — not "might be reused later"
+
+## JSON:API queries and mutations
+
+When calling a JSON:API endpoint, **isolate the wire types** so consumers never see `attributes`, `relationships`, or `included`.
+
+1. Keep resource / included / response interfaces **private** to the query or mutation file (not exported).
+2. Do **not** let callers pass or customize `include` — hardcode the includes the function needs.
+3. After the response, **map** to a public domain type with relationships/includes **inlined** as normal nested fields (and attributes flattened onto the object).
+4. Export only that mapped type (and the function). Prefer a zod schema + `z.infer` when the type is also used in forms.
+
+```typescript
+// ✅ GOOD — public mapped type; JSON:API stays private below
+export const complianceAuditSignInFlowSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  isGlobalFlow: z.boolean(),
+  location: z.object({
+    id: z.string(),
+    name: z.string(),
+  }),
+});
+export type ComplianceAuditSignInFlow = z.infer<typeof complianceAuditSignInFlowSchema>;
+
+export async function listSignInFlows(...): Promise<{ data: ComplianceAuditSignInFlow[] }> {
+  const response = await envoyWeb.get<SignInFlowsApiResponse>('api/v3/flows/', {
+    params: { include: 'location,global-flow', ... },
+  });
+  return mapSignInFlowsResponse(response.data);
+}
+
+interface SignInFlowResource { /* private JSON:API */ }
+interface SignInFlowsApiResponse { /* private */ }
+function mapSignInFlowsResponse(...) { /* flatten includes */ }
+
+// ❌ BAD — exporting JSON:API shapes or making callers resolve includes
+export interface SignInFlow {
+  id: string;
+  attributes: { name: string };
+  relationships: { location: { data: { id: string } } };
+}
+export type SignInFlowIncluded = LocationResource | GlobalFlowResource;
+```
+
+The same rule applies to **mutation request/response** bodies: build or parse JSON:API privately inside the mutation file; accept/return domain params and mapped types at the public boundary.
