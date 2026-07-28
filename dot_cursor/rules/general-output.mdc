@@ -5,6 +5,18 @@ alwaysApply: true
 
 # General output
 
+## Writing style
+
+Write in complete English sentences with a subject and a verb. Prefer plain words over shorthand.
+
+Do not write telegram-style fragments, slogan lines, or compressed rule-speak. Do not use arrows as grammar (for example "form→params" or "A→B mapping"). Do not use em-dash imperatives as a substitute for a sentence (for example "extract now — do not copy"). Do not stack nouns without saying what to do (for example "shared serializer ownership layer").
+
+When stating a rule or recommendation, write it so someone could read it aloud and understand it without decoding symbols.
+
+Bad: "same form→params mapping, extract now — do not copy."
+
+Good: "If create and update both convert the same form values into the same API parameters, put that conversion in one shared function instead of copying it."
+
 ## Answer only what was asked
 
 Answer only the question that was asked. Do not pad responses with unsolicited sections.
@@ -66,13 +78,14 @@ Build the smallest thing that satisfies the current prompt. Stop when the reques
 
 - Implement **only** what the current message explicitly requests.
 - Do **not** carry over suggestions from earlier discussion unless the user repeats them in the implementation request.
-- Do **not** add exports, helpers, type guards, conversion utilities, hydration functions, extra props, state, effects, or callbacks beyond what is required.
+- Do **not** add exports, helpers, type guards, conversion utilities, hydration functions, extra props, state, effects, or callbacks beyond what is required for this change.
+- Do **not** invent conversion helpers "for later." If this change would otherwise copy non-trivial logic that already exists in the same resource module or layer, or that you are about to paste a second time there, extract and share one function instead. That extraction is in scope. Decide using the resources, modules, and layers guidance in coding-style. Identify what those are called in the current repo; do not assume frontend-only layer names on a backend.
 - For Storybook: wire actions **only** for props that exist on the component. No debug-only callback args.
 - If something might be useful later, **say it in one sentence** — do not write it.
 
 ### Before finishing
 
-Grep every new export/function. Delete anything with no caller. If only stories use it and the story works without it, inline or delete it. **One caller → inline; do not extract a helper or export.**
+Grep every new export/function. Delete anything with no caller. If only stories use it and the story works without it, inline or delete it. If a helper has only one caller and is not an intentional part of a module’s public interface, inline it rather than leaving it extracted. If you are about to duplicate non-trivial logic inside the same resource module or layer, share one function instead of leaving two copies.
 
 ### Out-of-scope work
 
@@ -82,6 +95,8 @@ You may **ask** before implementing something critical that is outside the promp
 
 - Each ask: **2 sentences max** to explain what you want to do and why.
 - **Max 2 asks per prompt.** More than 2 = user declines all of them.
+
+**Exception — resources / modules / layers:** If you are unsure whether to inline or extract, or how resources, modules, and layers should relate for the change, you may ask for direction. That ask may exceed two sentences only as needed to include a graph diagram of the relationships you currently believe exist (for example mermaid), using the names from the current repo, plus a plain-English statement of the decision you are stuck on. Still count it toward the max of 2 asks per prompt.
 
 ### Examples
 

@@ -1,5 +1,5 @@
 ---
-description: Coding style — yarn, no IIFEs, React forms, useCallback, null, JSON:API
+description: Coding style — yarn, React forms, resources/modules/layers, inline vs extract, JSON:API
 alwaysApply: true
 ---
 
@@ -158,11 +158,87 @@ return <span>{item.name.trim()}</span>;
 - Destructured bindings and parameters (not “declared then used once” temps)
 - Hook return values kept for a stable dependency array when the same value is listed in deps
 
-## No one-off helpers
+## Resources, modules, and layers
 
-Do **not** introduce a named function — module-scope or local — that is called from **one place only**. Inline the logic at that call site.
+Locality and reuse pull in opposite directions. When deciding whether to inline or extract, think in terms of resources, modules, and layers — not only “is there a second caller?”
 
-This applies to default-value builders, small transforms, count/format helpers, and new `export function` utilities with a single caller. If you are about to add a helper, grep for reuse first; if there is no second caller, inline it.
+These concepts apply on frontends and backends. The names and shapes of modules and layers differ by service and stack. Identify what they are called in the repo you are editing. Do not go looking for frontend-only names (for example React hooks) in a backend, or backend-only names in a frontend.
+
+### Resources
+
+A resource is a domain entity that supports CRUD (for example an order, a user, or an export template). It may have sub-resources, or it may itself be a sub-resource of something else.
+
+Code for the different CRUD operations on one resource is almost always closely related. Prefer reuse and type derivation inside that resource’s world:
+
+- Read, create, and update types often share most fields. Create may omit `id`. A partial update may make fields optional. Derive these from each other when the language allows it, instead of duplicating parallel shapes.
+- Transform and mapping logic for that resource is usually shared across create and update in the same layer.
+
+### Modules
+
+A module groups related resources for a feature, or is a generic utility module. Modules can vary in size and can contain other modules.
+
+Share freely inside a module when the logic belongs to that module’s resources. Do not casually couple unrelated modules by importing each other’s internals.
+
+### Layers
+
+A layer does one job and hands data to the next layer. Do not skip layers even when a layer is thin.
+
+What the layers are called depends on the service. Discover the local layering from the repo’s structure and existing patterns before inventing new ones.
+
+Illustrative frontend example (names will vary):
+
+1. **HTTP / API client layer** — calls endpoints with the data you give it. Prefer this layer to stay dumb about product behavior. When the wire format is awkward (for example JSON:API), this layer normalizes between wire shapes and easier internal types, and keeps the wire types private.
+2. **Data-access / async state layer** — caching, pagination, composing multiple API calls, and side effects such as analytics. On a React app this is often hooks around a query library. It may do almost nothing beyond wrapping one API function; that is fine. Never skip it to call the HTTP layer from UI directly.
+3. **Presentation layer** — UI that talks to the data-access layer.
+
+Illustrative backend example (names will vary): HTTP/controllers or handlers, application/services, domain models, persistence/repositories. Reuse still happens inside a resource’s module and within a layer; do not invent a “hooks” layer on a backend.
+
+Composition example on a frontend: an API module for one resource’s CRUD exposes internal-friendly types and functions without depending on the UI framework. A data-access module wraps that API module for caching and reactive queries. A feature module composes those with UI.
+
+Layer ownership for transforms (adapt to the local names):
+
+- UI or form values → internal command/params usually belongs with that resource’s data-access or application layer, not the raw HTTP client.
+- Internal params → wire request/response bodies belongs in the HTTP / API (or persistence) layer that owns the protocol.
+- Do not make the presentation layer import wire-format helpers, and do not make the HTTP client depend on UI form types.
+
+### Public interface of a module or layer
+
+Every export is part of a public interface: anything else can import it. Before exporting a helper, ask whether you are okay with unrelated modules, layers, or resources depending on it. Most of the time you are not.
+
+Do not invent distant one-off utilities and export them so the caller can import them. That pollutes the public surface and forces readers to jump around for trivial logic.
+
+Do not use barrel files as a way to hide one-offs while still exporting them. The fix is not to re-export less; it is to inline, or to share only inside the module/layer that owns the concern.
+
+### When you are unsure
+
+If you cannot tell whether to inline or extract, or how resources, modules, and layers relate for the change at hand, it is OK to stop and ask for direction before implementing. Do not guess and pollute a public interface, skip a layer, or copy non-trivial logic across the wrong boundary.
+
+When you ask, include a graph diagram of what you currently think the resource, module, and layer relationships are (for example a mermaid diagram). Label the nodes with the names used in the current repo. State the decision you are stuck on in plain English next to the diagram.
+
+## Inline vs extract
+
+Default to inlining. Keep logic next to the only place that uses it when that keeps reading local.
+
+Before extracting or copying, ask:
+
+1. Is this code part of a specific resource, module, or layer?
+2. Does equivalent logic already exist in that same module or layer? If yes, reuse it instead of copying.
+3. Does it only exist in another module or layer? Reuse it only through that module’s intentional public interface. Do not reach into another module’s internals, and do not export a helper solely to unlock a cross-module import you should not make.
+
+Extract a named function when at least one of these is true:
+
+1. You are about to copy the same non-trivial logic into a second place inside the same module or layer (for example create and update for one resource). Prefer one shared function over two copies.
+2. The logic is hard to understand inline (branchy validation, multi-step conversion, subtle edge cases), and a name makes the caller clearer.
+3. A test needs to target that logic on its own.
+
+Do not extract when:
+
+1. There is only one caller and the logic is short and obvious.
+2. The helper would live in another file only to rename fields, wrap a one-liner, or restate what the caller already says.
+3. You are extracting "in case we need it later."
+4. Sharing would couple unrelated modules through an export you would not want as a stable public API.
+
+Where a shared helper lives: put it next to the resource and layer that own it (or beside the primary caller in that module). Do not create a junk drawer of tiny converters in a distant utils file. The goal is fewer jumps for the reader, not maximum file count.
 
 ```typescript
 // ❌ BAD — helper used once
@@ -198,9 +274,23 @@ return flows.length;
 
 ### Allowed
 
-- **Private sub-components** in the same file (see File layout) — UI decomposition is not a one-off helper
-- **Module-scope functions used in two or more places** in the same file or across the repo
-- **Shared domain/query utilities** with multiple real callers — not "might be reused later"
+- **Private sub-components** in the same file (see File layout) — UI decomposition is not an unjustified extract
+- **Module-scope functions used in two or more places** in the same resource module or layer
+- **Shared domain utilities** that are intentionally part of a module’s public interface with multiple real callers — not "might be reused later"
+
+## No drive-by conversion helpers
+
+Do not invent small conversion functions in other files when the caller would be clearer with the logic inlined. Jumping to another file for a two-line rename or a trivial reshape is worse than a bit of local duplication of the obvious.
+
+This is not permission to copy non-trivial logic inside the same resource module or layer. If the same non-trivial conversion already exists there, or you are about to paste it, share one function instead.
+
+## One owner per decision
+
+Adjacent layers should not repeat the same decision.
+
+If layer A already decides whether a value is present, omitted, normalized, or filtered, layer B should consume that result. It should not apply the same presence checks, the same defaults, or the same filtering again "to be safe."
+
+Each concern has one owner in one layer. Pass data through. Transform it once at the layer that owns that concern.
 
 ## JSON:API queries and mutations
 
