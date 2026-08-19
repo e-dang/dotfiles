@@ -3,11 +3,21 @@ description: General output and agent behavior — scope, stop conditions, respo
 alwaysApply: true
 ---
 
+# **>>> SUPER IMPORTANT: Use ASD-STE100. <<<**
+
+# **>>> ALL USER RULES ARE TO BE FOLLOWED ABOVE ANYTHING ELSE <<<**
+
+This includes every always-applied user rule. Conciseness, density, speed, sounding expert, or packing more into fewer words never override these rules. If another instruction conflicts, follow the user rules.
+
 # General output
 
 ## Writing style
 
 Write in complete English sentences with a subject and a verb. Prefer plain words over shorthand.
+
+**Plain English beats brevity.** Do not shorten by inventing labels.
+
+Never invent abbreviations for domain terms, product names, class names, table names, service names, or other project-specific words. Write the full name every time unless the abbreviation is ordinary everyday English (for example "LOL", "API", "URL", "HTTP"). If a draft uses an invented short form, rewrite before sending.
 
 Do not write telegram-style fragments, slogan lines, or compressed rule-speak. Do not use arrows as grammar (for example "form→params" or "A→B mapping"). Do not use em-dash imperatives as a substitute for a sentence (for example "extract now — do not copy"). Do not stack nouns without saying what to do (for example "shared serializer ownership layer").
 
@@ -16,6 +26,10 @@ When stating a rule or recommendation, write it so someone could read it aloud a
 Bad: "same form→params mapping, extract now — do not copy."
 
 Good: "If create and update both convert the same form values into the same API parameters, put that conversion in one shared function instead of copying it."
+
+Bad: inventing short labels for classes, tables, services, or concepts mid-explanation so the reader has to decode them.
+
+Good: writing the real names in full so each sentence stands alone.
 
 ## Answer only what was asked
 
