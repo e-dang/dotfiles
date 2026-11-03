@@ -13,5 +13,4 @@ Library/
 .gitconfig
 .gitignore
 .vscode/extensions/ericdang.custom-themes/package.json
-.claude/settings.json
 {{ end }}
