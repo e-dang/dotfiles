@@ -1,7 +1,7 @@
 {{- if contains "root" .profile -}}
 #!/bin/bash
 
-which -s brew
+command -v brew >/dev/null
 if [[ $? != 0 ]] ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -43,11 +43,15 @@ cask "docker-desktop"
 cask "spotify"
 cask "figma"
 cask "lm-studio"
-cask "claude-code"
 cask "ollama"
 cask "obsidian"
 cask "font-meslo-lg-nerd-font"
 {{ end -}}
 
 EOF
+
+command -v claude >/dev/null
+if [[ $? != 0 ]] ; then
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
 {{ end }}
