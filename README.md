@@ -20,14 +20,10 @@ sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/do
 
 ### Work Machine Setup
 
-On a work machine, some files (`.gitconfig`, `.gitignore`, `.vscode/extensions/ericdang.custom-themes/package.json`) are managed externally and should not be overwritten by chezmoi after initial setup.
+Run the install command above and set `is_work` to **true** when prompted. Everything else (packages, macOS settings, configs) is applied the same as on a personal machine, except:
 
-1. Run the install command above. When prompted, set `is_work` to **false** so that git configs are applied on the first run.
-2. After the initial apply, update your chezmoi config to mark this as a work machine:
-   ```
-   chezmoi edit-config
-   ```
-   Set `is_work = true` under `[data]`. Subsequent runs of `chezmoi apply` will skip those files.
+- `.gitconfig`, `.gitignore`, and `.vscode/extensions/ericdang.custom-themes/package.json` are not managed by chezmoi, since they are managed externally on a work machine.
+- The computer's hostname is not changed, and you are not prompted for one.
 
 ### Update
 
