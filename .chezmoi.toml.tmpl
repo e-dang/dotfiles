@@ -40,6 +40,8 @@
 {{-   $global_vault_path = promptStringOnce . "global_vault_path" "global vault path (leave empty if none)" "" -}}
 {{- end -}}
 
+pager = ""
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}

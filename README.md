@@ -4,10 +4,12 @@ Personal dotfiles repository for automating the setup of my work stations. Uses 
 
 ## Installation
 
+The chezmoi config turns the pager off by default (`pager = ""`), since a pager can hide prompts (e.g. `sudo` passwords) from the install scripts and make chezmoi appear to hang. The install commands below pass `--no-pager` because the config does not exist yet on a new machine.
+
 ### MacOs:
 
 ```
-sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply --no-pager https://github.com/e-dang/dotfiles
 ```
 
 If using iTerm2, you must manually import settings in the iTerm2 directory (see the README located there).
@@ -15,7 +17,7 @@ If using iTerm2, you must manually import settings in the iTerm2 directory (see 
 ### Linux
 
 ```
-sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply https://github.com/e-dang/dotfiles
+sh -c "$(wget -qO- git.io/chezmoi)" -- init --apply --no-pager https://github.com/e-dang/dotfiles
 ```
 
 ### Work Machine Setup
