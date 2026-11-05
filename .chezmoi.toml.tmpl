@@ -40,6 +40,13 @@
 {{-   $global_vault_path = promptStringOnce . "global_vault_path" "global vault path (leave empty if none)" "" -}}
 {{- end -}}
 
+{{- $df_editor := "" -}}
+{{- if (hasKey . "df_editor") -}}
+{{-   $df_editor = .df_editor -}}
+{{- else -}}
+{{-   $df_editor = promptChoiceOnce . "df_editor" "editor for opening dotfiles" (list "cursor" "code") -}}
+{{- end -}}
+
 pager = ""
 
 [data]
@@ -48,4 +55,5 @@ pager = ""
     profile = {{ $profile | quote }}
     hostname = {{ $hostname | quote }}
     global_vault_path = {{ $global_vault_path | quote }}
+    df_editor = {{ $df_editor | quote }}
     is_work = {{ $is_work }}

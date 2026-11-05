@@ -13,7 +13,7 @@ After making changes, do NOT run `chezmoi apply` unless the user explicitly asks
 - `dot_shell/aliases.sh.tmpl` — shell aliases
 - `dot_shell/functions.sh.tmpl` — shell functions
 - `dot_shell/path.sh.tmpl` — PATH modifications
-- `dot_shell/env.sh` — environment variables
+- `dot_shell/env.sh.tmpl` — environment variables
 - `dot_shell/plugins.sh.tmpl` — shell plugins
 - `dot_zsh/` — zsh-specific config (keybindings, oh-my-zsh, p10k, autosuggestions, etc.)
 - `modify_dot_zshrc` — managed lines that must exist in ~/.zshrc (this is a modify_ script, not a literal file — do not replace with dot_zshrc)

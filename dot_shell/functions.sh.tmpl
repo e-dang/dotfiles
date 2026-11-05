@@ -36,7 +36,7 @@ path_prepend() {
 
 # Open dotfiles repository
 dfopen() {
-    cursor $(chezmoi source-path)
+    "$DF_EDITOR" "$(chezmoi source-path)"
 }
 
 # Output vim cheat sheet
